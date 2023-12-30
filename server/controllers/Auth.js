@@ -323,3 +323,91 @@ exports.login = async (req, res) =>{
 }
 
 // change password
+exports.changePassword = async (req, res) =>{
+    try{
+
+        // get data
+        const {email, oldPassword, newPassword, confirmNewPassword} = req.body ;
+
+        // validation
+        if(!email || !oldPassword || !newPassword || !confirmNewPassword){
+            return(
+                res.status(400).json(
+                    {
+                        success : false, 
+                        message : "all fields are required",
+                    }
+                )
+            )
+        }
+
+        else if(newPassword !== confirmNewPassword){
+            return(
+                res.status(400).json(
+                    {
+                        success : false, 
+                        message : "new pass and confimpass not matching",
+                    }
+                )
+            )
+        }
+
+
+        // get details of user form DB
+        const user = await User.findOne({email});
+
+        if(!user){
+            return(
+                res.status(400).json(
+                    {
+                        success : false, 
+                        message : "email not available",
+                    }
+                )
+            )
+        }
+
+        // check old password
+        if(await bcrypt.compare(oldPassword,user.password )){
+            return(
+                res.status(400).json(
+                    {
+                        success : false, 
+                        message : "your entered/oldpassword not matching",
+                    }
+                )
+            )
+        }
+
+        // if matching then update newpassword after hasing in db
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        console.log("hashedPssword=>", hashedPassword);
+
+        const updatedUser = await User.updateOne({email}, {$set : { password: hashedPassword }});
+        console.log("updatedUser", updatedUser);
+
+        res.status(200).json(
+            {
+                success : true ,
+                message : "updatedUser password successfully",
+                updatedUser : updatedUser ,
+            }
+        )
+
+
+    }
+    catch(error){
+        console.log("errror in changepassword", error);
+
+        return(
+            res.status(500).json(
+                {
+                    success : false ,
+                    message : "error in change passsword",
+                    error : error ,
+                }
+            )
+        )
+
+    }
+}
