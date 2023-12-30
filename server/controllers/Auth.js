@@ -12,17 +12,17 @@ exports.sendOTP = async (req, res) =>{
     try{
 
         // 1) fetch email form req body
-        const {email} = req.body;
+        const {email} = req.body ;
 
         // 2) check user is already exised ?
-        const userPresent = await User.findOne({email});
+        const userPresent = await User.findOne({email}) ;
 
         // if user is existed
         return(
             res.json(401).json(
                 {
                     success : false, 
-                    message : "User already existed",
+                    message : "User already existed try login",
                 }
             )
         )
