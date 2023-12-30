@@ -3,6 +3,7 @@ const OTP = require("../models/Otp");
 
 const otpgenerator = require("otp-generator");
 const Profile = require("../models/Profile");
+const bcrypt = require("bcrypt");
 
 //==============================================
 // otp send function
@@ -22,7 +23,7 @@ exports.sendOTP = async (req, res) =>{
             res.json(401).json(
                 {
                     success : false, 
-                    message : "User already existed try login",
+                    message : "User already existed",
                 }
             )
         )
@@ -86,7 +87,7 @@ exports.sendOTP = async (req, res) =>{
 
 
 }
-
+//==============================================
 // signup
 
 exports.signUp = async (req, res) =>{
@@ -226,6 +227,10 @@ exports.signUp = async (req, res) =>{
     }
 }
 
+//==============================================
 // login
+exports.login = async (req, res) =>{
+    
+}
 
 // change password
