@@ -31,6 +31,8 @@ exports.auth = async (req, res, next) =>{
             console.log("decode ==>", decode);
 
             req.user = decode ;
+
+            next();
             
         }
         catch(error){
@@ -64,12 +66,97 @@ exports.auth = async (req, res, next) =>{
     }
 }
 
-
+//=========================================================
 // isStudent
+exports.isStudent = async(req, res, next) =>{
+    try{
+
+        if(req.user.accountType !== "Student"){
+            return(
+                {
+                    success : false ,
+                    message : "this is protected route for Students only"
+                }
+            )
+        }
+
+        next();
+
+        
+    }
+    catch(error){
+        return(
+            res.status(500).json(
+                {
+                    success : false , 
+                    message : "isStudent Middleware error",
+                    error : error ,
+                }
+            )
+        )
+    }
+}
 
 
-
-
+// =================================================
 // isInstructor
+exports.isInstructor = async(req, res, next) =>{
+    try{
 
+        if(req.user.accountType !== "Instructor"){
+            return(
+                {
+                    success : false ,
+                    message : "this is protected route for Instructor only"
+                }
+            )
+        }
+
+        next();
+
+        
+    }
+    catch(error){
+        return(
+            res.status(500).json(
+                {
+                    success : false , 
+                    message : "isInstructor Middleware error",
+                    error : error ,
+                }
+            )
+        )
+    }
+}
+
+// ============================================================
 // isAdmin
+
+exports.isAdmin = async (req, res, next) =>{
+    try{
+        if(req.user.accountType !== "Admin"){
+            return(
+                {
+                    success : false ,
+                    message : "this is protected route for admin only"
+                }
+            )
+        }
+
+        next();
+
+    }
+    catch(error){
+
+        return(
+            res.status(500).json(
+                {
+                    success : false , 
+                    message : "isAdmin Middleware error",
+                    error : error ,
+                }
+            )
+        )
+
+    }
+}
