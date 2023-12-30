@@ -5,7 +5,7 @@ const otpgenerator = require("otp-generator");
 const Profile = require("../models/Profile");
 
 //==============================================
-// otp send
+// otp send function
 
 exports.sendOTP = async (req, res) =>{
 
