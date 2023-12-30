@@ -4,6 +4,8 @@ const OTP = require("../models/Otp");
 const otpgenerator = require("otp-generator");
 const Profile = require("../models/Profile");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 //==============================================
 // otp send function
@@ -230,7 +232,94 @@ exports.signUp = async (req, res) =>{
 //==============================================
 // login
 exports.login = async (req, res) =>{
-    
+
+    try{
+        // 1) email and password fetch from req body
+        const {email, password} = req.body ;
+
+        // validation data
+        if(!email || !password){
+            return(
+                res.status(403).json(
+                    {
+                        success : false ,
+                        message : "all fields are required" ,
+                    }
+                )
+            )
+        }
+
+        // 2) check user is existed or not
+        const user = await User.findOne({email}).populate("additionalDetails") ;
+
+        if(!user){
+            return(
+                res.status(401).json(
+                    {
+                        success : false ,
+                        message : "user is not registered please signup first" ,
+                    }
+                )
+            )
+        }
+
+        // 3) match password and generate JWT
+        if(await bcrypt.compare(password, user.password)){
+
+            const payload = {
+                email : user.email ,
+                id : user._id,
+                role : user.role,
+            }
+
+            const token = await jwt.sign(payload, process.env.JWT_SECRET, {
+                expiresIn : "2h",
+            })
+
+            user.token = token ;
+            user.password = undefined ;
+
+            // 4) create cookie 
+
+            const options = {
+                expires : new Date(Date.now() + 3*34*60*60*1000),
+                httpOnly : true,
+            }
+
+            res.cookie("token", token, options).status(200).json({
+                success : true ,
+                token : token ,
+                user ,
+                message : "login successfull"
+            })
+
+        } 
+        else{
+            return(
+                res.status(401).json(
+                    {
+                        success : false,
+                        message : "password is incorrect",
+                    }
+                )
+            )
+        }
+
+    }
+    catch(error){
+        console.log("error in login =>", error);
+
+        return(
+            res.status(500).json(
+                {
+                    success : false, 
+                    message : "login failure error",
+                    error : error,
+                }
+            )
+        )
+
+    }
 }
 
 // change password
