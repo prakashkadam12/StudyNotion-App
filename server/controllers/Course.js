@@ -33,6 +33,9 @@ exports.createCourse = async (req, res) => {
 
         console.log("instructor details  =>", instructorDetails);
 
+        // JUST CHECK THAT 
+        // I THINK THAT USER.ID AND INSTRUCTOR.ID both are same
+
         if(!instructorDetails){
             // validation
             return(
@@ -138,6 +141,7 @@ exports.getAllCourses = async (req, res) =>{
 
     }
     catch(error){
+        
         console.log("error in getAllCourse ==>", error);
 
         return(
