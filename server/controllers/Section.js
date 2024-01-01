@@ -138,6 +138,9 @@ exports.deleteSection = async (req, res) =>{
         // get section id from params that we sending from frontend
         const {sectionId} = req.params ;
 
+        // TODO : do we need to delete the entry from the course schema ??
+        // TESTING ????
+
         // delete section
         const deletedSection = await Section.findByIdAndDelete(sectionId) ;
 
