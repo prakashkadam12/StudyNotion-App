@@ -133,3 +133,34 @@ exports.updateSection = async (req, res) =>{
 // ===============================================
 // delete section
 
+exports.deleteSection = async (req, res) =>{
+    try{
+        // get section id from params that we sending from frontend
+        const {sectionId} = req.params ;
+
+        // delete section
+        const deletedSection = await Section.findByIdAndDelete(sectionId) ;
+
+        return(
+            res.status(200).json(
+                {
+                    success : true ,
+                    message : "section deleted successfully",
+                    deletedSection ,
+                }
+            )
+        )
+    }
+    catch(error){
+        console.log("error in delte section ==>", error) ;
+        return(
+            res.status(500).json(
+                {
+                    success : false,
+                    message : "error in delete section",
+                    error ,
+                }
+            )
+        )
+    }
+}
