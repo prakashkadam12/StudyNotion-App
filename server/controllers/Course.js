@@ -4,7 +4,7 @@ const User = require("../models/User");
 
 const {uploadImageToCloudinary} = require("../utils/imageUploader");
 
-// =====================================
+// =============================================
 // createCourse handler function
 
 exports.createCourse = async (req, res) => {
@@ -113,8 +113,41 @@ exports.createCourse = async (req, res) => {
 
 
 
-
-
-// =====================================
+// =============================================
 // getAllCourse handler function
 
+exports.getAllCourses = async (req, res) =>{
+    try{
+        // get all course
+        const allCourse = await Course.find({}, {
+            courseName : true ,
+            price : true ,
+            thumbnail : true ,
+            instructor : true ,
+            ratingAndReviews : true ,
+            studentsEnrolled : true ,
+        }).populate("instructor");
+
+        res.status(200).json(
+            {
+                success : true ,
+                message : "Get all courses successfully", 
+                allCourse ,
+            }
+        )
+
+    }
+    catch(error){
+        console.log("error in getAllCourse ==>", error);
+
+        return(
+            res.status(500).json(
+                {
+                    success : false ,
+                    message : "error in getAllCourse",
+                    error ,
+                }
+            )
+        )
+    }
+}
