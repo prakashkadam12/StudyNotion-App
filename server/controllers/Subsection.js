@@ -173,7 +173,7 @@ exports.deleteSubSection = async (req, res) =>{
             res.status(500).json(
                 {
                     success : false,
-                    message : "error in delete sub section",
+                    message : "error in delete sub section error",
                     error ,
                 }
             )
