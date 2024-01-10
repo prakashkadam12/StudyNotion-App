@@ -2,6 +2,7 @@ import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import HighlightText from "../components/core/HomePage/HighlightText";
+import CTAButton from "../components/core/HomePage/Button";
 
 const Home = () =>{
 
@@ -31,9 +32,13 @@ const Home = () =>{
                     With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.
                 </div>
 
-                <div className="flex flex-row gap-7 mt-8">
-                    <CTAButton>
+                <div className="flex flex-row gap-7 mt-8 mx-auto">
+                    <CTAButton active={true} linkto={"/signup"}>
                         Learn More
+                    </CTAButton>
+
+                    <CTAButton active={false} linkto={"/login"} >
+                        Book a Demo
                     </CTAButton>
                 </div>
 
