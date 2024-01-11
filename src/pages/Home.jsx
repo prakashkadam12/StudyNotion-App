@@ -3,6 +3,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import HighlightText from "../components/core/HomePage/HighlightText";
 import CTAButton from "../components/core/HomePage/Button";
+import Banner from "../assets/Images/banner.mp4";
 
 const Home = () =>{
 
@@ -41,6 +42,14 @@ const Home = () =>{
                         Book a Demo
                     </CTAButton>
                 </div>
+
+                <div className=" shadow-blue-200 mx-7 my-12  ">
+                    <video className="box-shadow-class" muted loop autoPlay>
+                        <source src={Banner} type="video/mp4" />
+
+                    </video>
+                </div>
+
 
             </div>
 
