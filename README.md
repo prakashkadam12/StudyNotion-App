@@ -16,6 +16,11 @@
 
 # 🩵 Backend
 
+## 💚 DB schema design
+
+![image](https://github.com/parthmern/StudyNotion/assets/125397720/732c64ab-9bcc-4484-9d49-35752d1f1c2e)
+
+
 ## 💛 How OTP is working ?
 ![image](https://github.com/parthmern/StudyNotion/assets/125397720/87c18432-4ab7-4cf4-a3d0-256e3bf3769d)
 
