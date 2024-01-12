@@ -55,10 +55,31 @@ const TimeLineSection = () =>{
                 </div>
 
                 <div className="relative shadow-blue-200">
-                    <img src={timeLineImage} alt="" />
+                    <img src={timeLineImage} alt="" className="shadow-white object-cover h-fit" />
+
+                    <div className="absolute bg-caribbeangreen-700 flex flex-row text-white uppercase py-10 px-10 left-[50%] translate-x-[-50%]  translate-y-[-50%] ">
+                        <div className="flex flex-row gap-5 items-center border-r border-caribbeangreen-300 pr-5">
+                            <p className="text-3xl font-bold">10</p>
+                            <div className="text-caribbeangreen-300 font-sm">
+                                YEARS OF EXPERIANCE
+                            </div>
+                        </div>
+
+                        <div className="flex gap-5 items-center px-7">
+                            <p className="text-3xl font-bold">50</p>
+                            <div className="text-caribbeangreen-300 font-sm">
+                                Type of courses
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
 
+
             </div>
+
+           
 
         </div>
     )
