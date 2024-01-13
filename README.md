@@ -2,7 +2,7 @@
 ## 💚 how to run react and backend at the same time ?
 
 - `npm i concurrently` install in root folder
-- then in the frontend `package.json` file do below changes
+- then in the frontend `package.json` file do below changes.
 ```
 "scripts": {
     "start": "react-scripts start",
