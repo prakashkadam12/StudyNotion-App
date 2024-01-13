@@ -8,6 +8,7 @@ import CodeBlocks from "../components/core/HomePage/CodeBlocks";
 import TimeLineSection from "../components/core/HomePage/TimeLineSection";
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection";
 import InstructorSection from "../components/core/HomePage/InstructorSection";
+import Footer from "../components/common/Footer";
 
 
 const Home = () =>{
@@ -188,7 +189,7 @@ const Home = () =>{
                 
                 <InstructorSection />
 
-                <h2 className="text-center text-4xl font-semibold mt-10"> 
+                <h2 className="text-center text-4xl font-semibold mt-10 mb-10"> 
                         Review from other learners
                 </h2>
 
@@ -198,6 +199,7 @@ const Home = () =>{
             </div>
 
             {/* footer */}
+            <Footer />
         </div>
 
     )
