@@ -9,6 +9,7 @@ import TimeLineSection from "../components/core/HomePage/TimeLineSection";
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection";
 import InstructorSection from "../components/core/HomePage/InstructorSection";
 import Footer from "../components/common/Footer";
+import ExploreMore from "../components/core/HomePage/ExploreMore";
 
 
 const Home = () =>{
@@ -118,8 +119,9 @@ const Home = () =>{
                         codeblock={`import React from "react";\n import CTAButton from "./Button";\nimport TypeAnimation from "react-type";\nimport { FaArrowRight } from "react-icons/fa";\n\nconst Home = () => {\nreturn (\n<div>Home</div>\n)\n}\nexport default Home;`}
                         backgroundGradient={<div className="codeblock2 absolute"></div>}
                     />
-                    </div>
+                </div>
 
+                <ExploreMore />
 
             </div>
 
@@ -134,7 +136,7 @@ const Home = () =>{
 
                             {/* 3 cards */}
                             <div className="h-[150px] ">
-
+                                
                             </div>
                             
                             {/* btns */}
