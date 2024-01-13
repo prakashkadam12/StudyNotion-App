@@ -65,3 +65,9 @@ html, body {
 .homepage_bg{
   background-image: url(../src/assets/Images/bghome.svg);
 }
+
+
+.instructor-bg-shadow{
+  -webkit-box-shadow: -11px -10px 0px 0px #FFFFFF; 
+box-shadow: -11px -10px 0px 0px #FFFFFF;
+}
