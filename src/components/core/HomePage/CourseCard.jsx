@@ -14,7 +14,7 @@ const CourseCard = ({cardData, currentCard, setCurrentCard}) => {
       }  text-richblack-25 h-[300px] box-border cursor-pointer`}
       onClick={() => setCurrentCard(cardData?.heading)}
     >
-      <div className="border-b-[2px] border-richblack-400 border-dashed h-[80%] p-6 flex flex-col gap-3">
+      <div className="border-b-[2px] border-richblack-400 border-dashed h-[80%] md:p-6 p-3 flex flex-col gap-3">
         <div
           className={` ${
             currentCard === cardData?.heading && "text-richblack-800"
@@ -29,7 +29,7 @@ const CourseCard = ({cardData, currentCard, setCurrentCard}) => {
       <div
         className={`flex justify-between ${
           currentCard === cardData?.heading ? "text-blue-300" : "text-richblack-300"
-        } px-6 py-3 font-medium`}
+        } md:px-6 md:py-3 px-2 py-1 font-medium`}
       >
         {/* Level */}
         <div className="flex items-center gap-2 text-[16px]">

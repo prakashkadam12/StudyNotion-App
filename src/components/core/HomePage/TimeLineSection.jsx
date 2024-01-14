@@ -31,9 +31,9 @@ const timeLine = [
 const TimeLineSection = () =>{
     return(
         <div>
-            <div className="flex flex-row gap-15 items-center">
+            <div className="flex gap-3 flex-col md:flex-row gap-15 items-center">
 
-                <div className="w-[45%] flex flex-col gap-5">
+                <div className="w-full md:w-[45%] flex flex-col gap-5">
                     {
                         timeLine.map((element, index)=>{
                             return(
@@ -54,20 +54,20 @@ const TimeLineSection = () =>{
                     }
                 </div>
 
-                <div className="relative shadow-blue-200">
+                <div className="relative  shadow-blue-200">
                     <img src={timeLineImage} alt="" className="shadow-white object-cover h-fit" />
 
-                    <div className="absolute bg-caribbeangreen-700 flex flex-row text-white uppercase py-10 px-10 left-[50%] translate-x-[-50%]  translate-y-[-50%] ">
-                        <div className="flex flex-row gap-5 items-center border-r border-caribbeangreen-300 pr-5">
-                            <p className="text-3xl font-bold">10</p>
-                            <div className="text-caribbeangreen-300 font-sm">
+                    <div className="absolute  bg-caribbeangreen-700 flex flex-row text-white uppercase py-2 px-2 md:py-10 md:px-10 left-[50%] translate-x-[-50%]  translate-y-[-50%] ">
+                        <div className="flex flex-row gap-2 md:gap-5 items-center border-r border-caribbeangreen-300 pr-2 md:pr-5">
+                            <p className="md:text-3xl text-xl font-bold">10</p>
+                            <div className="text-caribbeangreen-300 text-[10px] md:font-sm">
                                 YEARS OF EXPERIANCE
                             </div>
                         </div>
 
-                        <div className="flex gap-5 items-center px-7">
-                            <p className="text-3xl font-bold">50</p>
-                            <div className="text-caribbeangreen-300 font-sm">
+                        <div className="flex gap-2 md:gap-5 items-center px-2 md:px-7">
+                            <p className="md:text-3xl text-xl font-bold">50</p>
+                            <div className="text-caribbeangreen-300 text-[10px] md:font-sm">
                                 Type of courses
                             </div>
                         </div>

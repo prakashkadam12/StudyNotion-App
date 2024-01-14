@@ -23,7 +23,7 @@ const Home = () =>{
                 <Link to={"/signup"}>
 
                     <div className="group mt-16 p-1 mx-auto rounded-full bg-richblack-800 font-bold text-richblack-200 transition-all duration-200 hover:scale-95 w-fit ">
-                        <div className="flex flex-row items-center gap-2 rounded-full px-10 py-[5px] transition-all duration-200 group-hover:bg-richblack-900 ">
+                        <div className="flex flex-row items-center gap-2 rounded-full px-2 text-[10px] md:text-[20px] md:px-10 py-[5px] transition-all duration-200 group-hover:bg-richblack-900 ">
                             <p>Become and Instructor</p>
                             <FaArrowRight />
                         </div>
@@ -161,7 +161,7 @@ const Home = () =>{
 
                     {/* get the skill you need  for a job that is in demand */}
                     <div className="mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-center gap-7 ">
-                        <div className="flex flex-row gap-5 mt-10">
+                        <div className="flex flex-col md:flex-row gap-5 mt-10">
                             <div className="font-semibold text-4xl ">
                                 Get the skills you need for a <HighlightText text={"job that is in demand."} />
                             </div>

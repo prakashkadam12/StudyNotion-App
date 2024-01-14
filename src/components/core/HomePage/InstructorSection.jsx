@@ -9,13 +9,13 @@ const InstructorSection = () => {
 
         <div className="mt-16  ">
 
-            <div className="flex  mx-auto justify-center flex-row gap-20 items-center">
+            <div className="flex flex-col mx-auto justify-center md:flex-row gap-3 md:gap-20 items-center">
             
-                <div className="w-[50%] p-10 ">
+                <div className="md:w-[50%] w-full p-10 ">
                     <img src={instructorImg} alt="" className="shadow-white instructor-bg-shadow" />
                 </div>
 
-                <div className="flex w-[50%] flex-col gap-10 ">
+                <div className="flex md:w-[50%] w-full p-4 md:pd-0 flex-col gap-10 ">
                     <div className="text-4xl font-semibold ">
                         Become an <HighlightText text={"instructor"} />
                     </div>
