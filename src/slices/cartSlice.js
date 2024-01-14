@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
-import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     totalItem : localStorage.getItem("totalItem") ? JSON.parse(localStorage.getItem("totalItem")) : 0 ,
