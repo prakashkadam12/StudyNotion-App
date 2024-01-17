@@ -34,7 +34,7 @@ const Navbar = () =>{
         try{
 
             const result = await apiConnector("GET", categories.CATEGORIES_API);
-            console.log("printing res=>", result) ;
+            console.log("💚 printing res=>", result) ;
             setSubLinks(result.data.data);
 
         }

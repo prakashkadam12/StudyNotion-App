@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import Navbar from "./components/common/Navbar";
+import Login from "./pages/Login";
+import SignupForm from "./components/core/Auth/SingupForm";
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/signup" element={<SignupForm />} />
       </Routes>
     </div>
   );
