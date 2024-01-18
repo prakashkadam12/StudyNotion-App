@@ -5,6 +5,9 @@ import Navbar from "./components/common/Navbar";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Error from "./pages/Error";
+import ForgotPassword from "./pages/ForgotPassword";
+import OpenRoute from "./components/core/Auth/OpenRoute";
+import UpdatePassword from "./pages/UpdatePassword";
 
 function App() {
   return (
@@ -13,10 +16,12 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="*" element={<Error />}
+        <Route path="/" element={ <Home />} />
+        <Route path="/login" element={<OpenRoute> <Login/> </OpenRoute> } />
+        <Route path="/signup" element={<OpenRoute> <Signup /> </OpenRoute> } />
+        <Route path="/forgotpassword" element={<OpenRoute> <ForgotPassword /> </OpenRoute> } />
+        <Route path="/updatepassword" element={<UpdatePassword/>} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );

@@ -136,6 +136,8 @@ export function getPasswordResetToken(email , setEmailSent) {
   return async(dispatch) => {
     dispatch(setLoading(true));
     try{
+
+      // mail sent to user with otp
       const response = await apiConnector("POST", RESETPASSTOKEN_API, {email,})
 
       console.log("RESET PASSWORD TOKEN RESPONSE....", response);
@@ -144,7 +146,7 @@ export function getPasswordResetToken(email , setEmailSent) {
         throw new Error(response.data.message);
       }
 
-      toast.success("Reset Email Sent");
+      toast.success("Reset Email Sent successfully");
       setEmailSent(true);
     }
     catch(error) {
