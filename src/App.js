@@ -20,7 +20,7 @@ function App() {
         <Route path="/login" element={<OpenRoute> <Login/> </OpenRoute> } />
         <Route path="/signup" element={<OpenRoute> <Signup /> </OpenRoute> } />
         <Route path="/forgotpassword" element={<OpenRoute> <ForgotPassword /> </OpenRoute> } />
-        <Route path="/updatepassword" element={<UpdatePassword/>} />
+        <Route path="/update-password/:id" element={<UpdatePassword/>} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
