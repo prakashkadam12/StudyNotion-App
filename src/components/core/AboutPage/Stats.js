@@ -12,13 +12,13 @@ const StatsComponent = () => {
     return(
         <section>
             <div>
-                <div className="flex">
+                <div className="flex md:flex-row flex-col gap-y-3 left-0 my-7  w-full p-10 bg-richblack-200 ">
                     {
                         Stats.map((data, index) =>{
                             return(
-                                <div key={index}>
-                                    <p>{data.count}</p>
-                                    <p>{data.label}</p>
+                                <div className="flex w-full items-center flex-col justify-center" key={index}>
+                                    <p className="text-3xl font-bold ">{data.count}</p>
+                                    <p className="text-richblack-500 ">{data.label}</p>
                                 </div>
                             )
                         } )

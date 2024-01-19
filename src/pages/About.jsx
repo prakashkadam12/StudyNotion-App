@@ -11,18 +11,17 @@ import LearningGrid from "../components/core/AboutPage/LearningGrid";
 const About = () => {
 
     return(
-        <div className="mt-[100px] text-white">
+        <div className="mt-[50px] w-11/12 max-w-maxContent mx-auto text-white">
 
             {/* ssection 1 */}
             <section>
-                <div>
-                    <header>
+                <div className="">
+                    <header className="text-center text-4xl w-[70%] mx-auto font-bold">
                         Driving Innovation in Online Education for a <HighlightText text={"Brighter Future"} />
-
-                    <p>Studynotion is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.</p>
                     </header>
+                    <p className="text-lg text-center w-[70%] mx-auto mt-3 text-richblack-200">Studynotion is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.</p>
 
-                    <div className="flex mx-auto">
+                    <div className="flex mt-14 gap-x-6 mx-auto">
                         <img src={BannerImage1} alt="" />
                         <img src={BannerImage2} alt="" />
                         <img src={BannerImage3} alt="" />
@@ -34,46 +33,46 @@ const About = () => {
             </section>
 
             {/* section 2 */}
-            <section>
-                <div>
+            <section >
+                <div className="text-4xl border-b-[1px] mb-3 text-center font-semibold py-7">
                     <Quote />
                 </div>
             </section>
 
             {/* section 3 */}
             <section>
-                <div className="flex-col">
+                <div className="flex w-full items-center justify-center flex-col mt-14 gap-y-8 py-10">
 
                     {/* founding story upper wala box */}
-                    <div className="flex">
+                    <div className="flex md:flex-row flex-col gap-y-5 item-center justify-center gap-x-5 ">
                     
                         {/* left box founding story */}
-                        <div>
-                            <h1>Our Founding Story</h1>
-                            <p>Our e-learning platform was born out of a shared vision and passion for transforming education. It all began with a group of educators, technologists, and lifelong learners who recognized the need for accessible, flexible, and high-quality learning opportunities in a rapidly evolving digital world.</p>
-                            <p>As experienced educators ourselves, we witnessed firsthand the limitations and challenges of traditional education systems. We believed that education should not be confined to the walls of a classroom or restricted by geographical boundaries. We envisioned a platform that could bridge these gaps and empower individuals from all walks of life to unlock their full potential.</p>
+                        <div className="md:w-[50%] w-full mx-auto flex flex-col gap-y-5">
+                            <p className="text-3xl"><HighlightText  text={"Our Founding Story"}></HighlightText></p>
+                            <p className="text-[15px] text-richblack-100">Our e-learning platform was born out of a shared vision and passion for transforming education. It all began with a group of educators, technologists, and lifelong learners who recognized the need for accessible, flexible, and high-quality learning opportunities in a rapidly evolving digital world.</p>
+                            <p className="text-[15px] text-richblack-100">As experienced educators ourselves, we witnessed firsthand the limitations and challenges of traditional education systems. We believed that education should not be confined to the walls of a classroom or restricted by geographical boundaries. We envisioned a platform that could bridge these gaps and empower individuals from all walks of life to unlock their full potential.</p>
                         </div>
 
                         {/* founding story right box */}
-                        <div>
+                        <div className="md:w-[50%] mx-auto w-full my-auto">
                             <img src={FoundingStory} alt="" />
                         </div>
 
                     </div>
 
                     {/* vision and mission */}
-                    <div className="flex">
+                    <div className="flex flex-col md:flex-row gap-x-10 gap-y-5 mt-10">
 
                         {/* left box - our vision */}
-                        <div>
-                            <h1>Our Vision</h1>
-                            <p>With this vision in mind, we set out on a journey to create an e-learning platform that would revolutionize the way people learn. Our team of dedicated experts worked tirelessly to develop a robust and intuitive platform that combines cutting-edge technology with engaging content, fostering a dynamic and interactive learning experience.</p>
+                        <div className="flex flex-col gap-y-4">
+                            <p className="text-3xl"><HighlightText text={"Our Vision"} /></p>
+                            <p className="text-[15px] text-richblack-100">With this vision in mind, we set out on a journey to create an e-learning platform that would revolutionize the way people learn. Our team of dedicated experts worked tirelessly to develop a robust and intuitive platform that combines cutting-edge technology with engaging content, fostering a dynamic and interactive learning experience.</p>
                         </div>
 
                         {/* right box- our mission */}
-                        <div>
-                            <h1>Our Mission</h1>
-                            <p>Our mission goes beyond just delivering courses online. We wanted to create a vibrant community of learners, where individuals can connect, collaborate, and learn from one another. We believe that knowledge thrives in an environment of sharing and dialogue, and we foster this spirit of collaboration through forums, live sessions, and networking opportunities.</p>
+                        <div className="flex flex-col gap-y-4">
+                            <p className="text-3xl"><HighlightText text={"Our Mission"} /></p>
+                            <p className="text-[15px] text-richblack-100">Our mission goes beyond just delivering courses online. We wanted to create a vibrant community of learners, where individuals can connect, collaborate, and learn from one another. We believe that knowledge thrives in an environment of sharing and dialogue, and we foster this spirit of collaboration through forums, live sessions, and networking opportunities.</p>
                         </div>
 
 

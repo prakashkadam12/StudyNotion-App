@@ -47,24 +47,25 @@ const LearningGrid = () => {
         },
       ];
 
+
     return(
-        <div className="grid mx-auto grid-col-1 lg:grid-cols-4">
+        <div className="grid mx-auto my-20 grid-col-1 lg:grid-cols-4 w-11/12 max-w-maxContent">
             {
                 LearningGridArray.map((card, index)=>{
                     return(
-                        <div key={index} className={`${index === 0 && "lg:col-span-2"} ${card.order % 2 === 1 ? "bg-richblack-700" : "bg-richblue-800"} ${card.order === 3 && "lg:col-start-2"} `}>
+                        <div key={index} className={`${card.order === -1 && "lg:col-span-2 bg-richblack-900  lg:h-[250px] "} ${card.order % 2 === 1 ? "bg-richblack-700 lg:h-[250px]" : "bg-richblue-800 lg:h-[250px]"} ${card.order === 3 && "lg:col-start-2 lg:h-[250px]"} `}>
                             {
                                 card.order < 0 ? 
                                 (
-                                    <div>
-                                        <div>
-                                            {card.heading}
+                                    <div className="lg:w-full h-full flex flex-col pb-5 bg-richblack-900  gap-3">
+                                        <div className="text-4xl font-semibold" >
+                                            {card.heading + " "}
                                             <HighlightText text={card.highlightText} />
                                         </div>
-                                        <p>
+                                        <p className="font-medium ">
                                             {card.description}
                                         </p>
-                                        <div>
+                                        <div className="w-fit">
                                             <CTAButton active={true} linkto={card.link}>
                                                 {card.BtnText}
                                             </CTAButton>
@@ -72,11 +73,11 @@ const LearningGrid = () => {
                                     </div>
                                 ) :
                                 (
-                                    <div>
-                                        <h1>
+                                    <div className="flex items-baseline h-full justify-center p-5 flex-col">
+                                        <h1 className="text-xl">
                                             {card.heading}
                                         </h1>
-                                        <p>
+                                        <p className="text-richblack-200">
                                             {card.description}
                                         </p>
                                     </div>
