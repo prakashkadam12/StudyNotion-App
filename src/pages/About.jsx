@@ -7,10 +7,14 @@ import Quote from "../components/core/AboutPage/Quote";
 import FoundingStory from "../assets/Images/FoundingStory.png";
 import StatsComponent from "../components/core/AboutPage/Stats";
 import LearningGrid from "../components/core/AboutPage/LearningGrid";
+import ContactUsForm from "../components/core/ContactPage/ContactUsForm";
+import ContactFormSection from "../components/core/AboutPage/ContactFormSection";
+import Footer from "../components/common/Footer";
 
 const About = () => {
 
     return(
+        <>
         <div className="mt-[50px] w-11/12 max-w-maxContent mx-auto text-white">
 
             {/* ssection 1 */}
@@ -21,7 +25,7 @@ const About = () => {
                     </header>
                     <p className="text-lg text-center w-[70%] mx-auto mt-3 text-richblack-200">Studynotion is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.</p>
 
-                    <div className="flex mt-14 gap-x-6 mx-auto">
+                    <div className="flex flex-col w-[50%] md:w-full  md:flex-row mt-14 gap-6 mx-auto">
                         <img src={BannerImage1} alt="" />
                         <img src={BannerImage2} alt="" />
                         <img src={BannerImage3} alt="" />
@@ -88,12 +92,16 @@ const About = () => {
             </div>
 
             {/* section 5 */}
-            <section>
+            <section className="mx-auto flex flex-col items-center justify-center">
                 <LearningGrid />
+                <ContactFormSection />
             </section>
 
+           
 
         </div>
+        <Footer />
+        </>
     )
 }
 
