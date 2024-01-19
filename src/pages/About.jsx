@@ -5,6 +5,8 @@ import BannerImage2 from "../assets/Images/aboutus2.webp" ;
 import BannerImage3 from "../assets/Images/aboutus3.webp" ;
 import Quote from "../components/core/AboutPage/Quote";
 import FoundingStory from "../assets/Images/FoundingStory.png";
+import StatsComponent from "../components/core/AboutPage/Stats";
+import LearningGrid from "../components/core/AboutPage/LearningGrid";
 
 const About = () => {
 
@@ -79,6 +81,16 @@ const About = () => {
                     </div>
 
                 </div>
+            </section>
+
+            {/* section 4 */}
+            <div>
+                <StatsComponent />
+            </div>
+
+            {/* section 5 */}
+            <section>
+                <LearningGrid />
             </section>
 
 
