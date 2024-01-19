@@ -1,4 +1,6 @@
 import React from "react";
+import HighlightText from "../HomePage/HighlightText";
+import CTAButton from "../HomePage/Button" ;
 
 const LearningGrid = () => {
 
@@ -46,8 +48,45 @@ const LearningGrid = () => {
       ];
 
     return(
-        <div>
-            
+        <div className="grid mx-auto grid-col-1 lg:grid-cols-4">
+            {
+                LearningGridArray.map((card, index)=>{
+                    return(
+                        <div key={index} className={`${index === 0 && "lg:col-span-2"} ${card.order % 2 === 1 ? "bg-richblack-700" : "bg-richblue-800"} ${card.order === 3 && "lg:col-start-2"} `}>
+                            {
+                                card.order < 0 ? 
+                                (
+                                    <div>
+                                        <div>
+                                            {card.heading}
+                                            <HighlightText text={card.highlightText} />
+                                        </div>
+                                        <p>
+                                            {card.description}
+                                        </p>
+                                        <div>
+                                            <CTAButton active={true} linkto={card.link}>
+                                                {card.BtnText}
+                                            </CTAButton>
+                                        </div>
+                                    </div>
+                                ) :
+                                (
+                                    <div>
+                                        <h1>
+                                            {card.heading}
+                                        </h1>
+                                        <p>
+                                            {card.description}
+                                        </p>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    )
+                })
+            }
+
         </div>
 
     )
