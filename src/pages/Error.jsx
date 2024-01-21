@@ -3,10 +3,10 @@ import React from "react";
 const Error = () =>{
 
     return(
-        <div className="flex item-center justify-center text-5xl text-yellow-100">
+        <div className="flex item-center mx-auto scale-50 w-[100vw] mt-20 justify-center text-5xl text-yellow-100">
             <figure>
 	
-	<figcaption>
+	<figcaption className="w-[100%]">
 		<span className="sr-text">Error 404: Not Found</span>
 		<span className="e"></span>
 		<span className="r"></span>

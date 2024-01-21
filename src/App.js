@@ -11,6 +11,7 @@ import UpdatePassword from "./pages/UpdatePassword";
 import VerifyEmail from "./pages/VerifyEmail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -22,12 +23,16 @@ function App() {
         <Route path="/" element={ <Home />} />
         <Route path="/login" element={<OpenRoute> <Login/> </OpenRoute> } />
         <Route path="/signup" element={<OpenRoute> <Signup /> </OpenRoute> } />
-        <Route path="/forgotpassword" element={<OpenRoute> <ForgotPassword /> </OpenRoute> } />
+        <Route path="/forgot-password" element={<OpenRoute> <ForgotPassword /> </OpenRoute> } />
         <Route path="/update-password/:id" element={<UpdatePassword/>} />
         <Route path="/verify-email" element={<VerifyEmail />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Error />} />
+        
+        {/* outlet wala route */}
+        <Route path="/dashboard/my-profile" element={<Dashboard/>} />
+
       </Routes>
     </div>
   );
