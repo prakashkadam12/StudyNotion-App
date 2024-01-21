@@ -29,11 +29,18 @@ const Sidebar = () => {
                         sidebarLinks.map((link, index)=>{
                             if(link.type && user?.accountType !== link.type) return null;
                             return(
-                                <SidebarLinks />
+                                <SidebarLinks key={link.id} iconName={link.icon} link={link} />
                             )
                         })
                     }
                 </div>
+
+                <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-richblack-600 " >
+                    <div className="flex flex-col">
+                        <SidebarLinks link={{name:"Setting", path:"dashboard/setting"}}  iconName="VscSettingsGear"/>
+                    </div>
+                </div>
+
             </div>  
 
         </div>
