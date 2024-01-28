@@ -31,7 +31,7 @@ const Sidebar = () => {
     console.log("LINKS==>",LINKS);
 
     return(
-        <div>
+        <>
             
             <div className="flex min-w-[222px] flex-col border-r-[1px]  border-richblack-700 h-[calc(100vh - 3.5rem)] bg-richblue-800 py-10" >
 
@@ -86,7 +86,7 @@ const Sidebar = () => {
 
             {confirmationModal && <ConfiramtionModal modalData={confirmationModal} /> }
 
-        </div>
+        </>
     )
 }
 

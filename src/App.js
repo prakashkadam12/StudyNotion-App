@@ -12,6 +12,7 @@ import VerifyEmail from "./pages/VerifyEmail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
+import MyProfile from "./components/core/Dashboard/MyProfile";
 
 function App() {
 
@@ -36,7 +37,7 @@ function App() {
         <Route path="*" element={<Error />} />
         
         {/* outlet wala route */}
-        <Route path="/dashboard/my-profile" element={<Dashboard/>} />
+        <Route path="/dashboard/my-profile" element={<MyProfile/>} />
 
       </Routes>
     </div>

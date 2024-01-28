@@ -85,3 +85,9 @@ app.post('/payment-success', (req, res) => {
 
 - once the payment is proceed successfully by the user, RazorPay will send a POST REQ through webhook to the WEBHOOK URL that you have set in the razorpay dashboard.Handle the verification of payment in the `/payment-success` route
 - we have to add the "SIGNATURE VERIFICATION URL" in the webhook of the razorpay dashboard. 
+
+
+## 💚 Problems that i faced
+- Buttons are not available of LOGIN and SIGNUP. I forgot to set the value of user loggedin profile in locat storage.How I solved it? - i got 2 ways here 1= that i used in my first notes appliaction if there is token available in cookies firstly then put the request on backend and grab the details of user. 2= set the local storage values while login is successfull and i choose the second way because i want to learn something new about local storage.
+
+

@@ -7,6 +7,15 @@ const Dashboard = () => {
 
     const {loading: authLoading} = useSelector((state)=> state.auth) ;
     const {loading: profileLoading} = useSelector((state)=>state.profile);
+
+    const {user} = useSelector((state) => state.profile);
+    if(user == null){
+        return(
+            <div>
+                User is Null
+            </div>
+        )
+    }
     
     if(profileLoading || authLoading){
 
