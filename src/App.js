@@ -14,6 +14,11 @@ import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
+
+  
+
+
+
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
 

@@ -22,3 +22,4 @@ const ConfiramtionModal = ({modalData}) => {
     )
 }
 
+export default ConfiramtionModal ;
