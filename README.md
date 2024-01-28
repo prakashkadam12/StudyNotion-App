@@ -101,3 +101,5 @@ app.post('/payment-success', (req, res) => {
 
 ```
 
+- Learn about Delete account feature like if person clicked on DELETE account then it will put request in backend but it will not be successfully excecuted instat. We can set time like it will excecuted after 10 days or something and add extra feature that during 10 days if user loggedin with same account then the deletion of account process removed automatically.
+
