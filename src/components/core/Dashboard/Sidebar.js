@@ -7,7 +7,8 @@ import SidebarLinks from "./SidebarLinks";
 import { useNavigate } from "react-router-dom";
 import { VscSignOut } from "react-icons/vsc";
 import ConfiramtionModal from "../../common/ConfirmationModa";
-
+import IconBtn from "../../common/IconBtn";
+import CTAButton from "../../../components/core/HomePage/Button";
 
 
 const Sidebar = () => {
@@ -74,8 +75,9 @@ const Sidebar = () => {
                     className="text-sm font-medium text-richblack-300 "
                     />
 
-                    <div className="flex items-center gap-x-2 justify-center">
+                    <div className="flex text-center text-[13px] px-6 py-2 hover:cursor-pointer hover:scale-95 transition-all duration-200 rounded-md font-bold bg-yellow-50 text-black items-center gap-x-2 justify-center">
                         <VscSignOut className="text-lg" />
+
                         <span>Logout</span>
                     </div>
 
