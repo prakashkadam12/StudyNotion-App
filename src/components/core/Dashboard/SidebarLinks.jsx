@@ -10,6 +10,7 @@ export default function SidebarLink({ link, iconName }) {
   const dispatch = useDispatch()
 
   const matchRoute = (route) => {
+    // matchPath is predefined function in react router dom
     return matchPath({ path: route }, location.pathname)
   }
 

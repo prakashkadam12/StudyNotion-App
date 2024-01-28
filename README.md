@@ -90,4 +90,14 @@ app.post('/payment-success', (req, res) => {
 ## 💚 Problems that i faced
 - Buttons are not available of LOGIN and SIGNUP. I forgot to set the value of user loggedin profile in locat storage.How I solved it? - i got 2 ways here 1= that i used in my first notes appliaction if there is token available in cookies firstly then put the request on backend and grab the details of user. 2= set the local storage values while login is successfull and i choose the second way because i want to learn something new about local storage.
 
+- MATCHROUTE function fata gaya and error was Calling the original function again and again recursive function without and condition so it is doing infinite looping. How i solved it ? - i just change the function name and everything is working fine.
+
+```
+  const matchRoute = (route) => {
+    // matchPath is predefined function in react router dom
+    // it gives TRUE value if the route is matching otherwise it will give FALSE value
+    return matchPath({ path: route }, location.pathname)
+  }
+
+```
 

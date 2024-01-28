@@ -36,8 +36,15 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Error />} />
         
-        {/* outlet wala route */}
-        <Route path="/dashboard/my-profile" element={<MyProfile/>} />
+        {/* REACT OUTLET FOR ROUTES */}
+        <Route element={<Dashboard />}>
+            
+            {/* outlet wala route */}
+            <Route path="/dashboard/my-profile" element={<MyProfile/>} />
+        
+        </Route>
+
+        
 
       </Routes>
     </div>
