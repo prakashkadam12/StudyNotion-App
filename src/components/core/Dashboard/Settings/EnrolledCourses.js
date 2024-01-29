@@ -1,3 +1,4 @@
+import ProgressBar from "@ramonak/react-progress-bar";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -54,10 +55,28 @@ const EnrolledCourses = () =>{
                                 enrolledCourses.map((course, index)=>{
                                     return(
                                         <div key={index}>
+
                                             <div>
                                                 <img src={course?.thumbnail} />
-                                                <p></p>
+                                                <div>
+                                                    <p>{course?.courseName}</p>
+                                                    <p>{course?.description}</p>
+                                                </div>
                                             </div>
+
+                                            <div>
+                                                {course?.totalDuration}
+                                            </div>
+
+                                            <div>
+                                                <p>Progress: {course.progrssPercentage || 0}%</p>
+                                                <ProgressBar 
+                                                completed={course.progrssPercentage || 0}
+                                                height="8px"
+                                                isLabelVisible={false}
+                                                />
+                                            </div>
+
                                         </div>
                                     )
                                 })
