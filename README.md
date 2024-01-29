@@ -25,7 +25,9 @@
 ![image](https://github.com/parthmern/StudyNotion/assets/125397720/87c18432-4ab7-4cf4-a3d0-256e3bf3769d)
 
 ## 🩵 How payment gateway working in backend using RAZORPAY ?
-![diagram-export-1-10-2024-8_43_19-AM](https://github.com/parthmern/StudyNotion/assets/125397720/3cdec2d2-f2a4-4504-b962-049ed2fcc567)
+![diagram-export-1-28-2024-8_12_58-PM](https://github.com/parthmern/StudyNotion/assets/125397720/9d8457d9-6a3f-44e8-9c1c-6aa4a357536e)
+
+
 
 
 ```
@@ -103,3 +105,4 @@ app.post('/payment-success', (req, res) => {
 
 - Learn about Delete account feature like if person clicked on DELETE account then it will put request in backend but it will not be successfully excecuted instat. We can set time like it will excecuted after 10 days or something and add extra feature that during 10 days if user loggedin with same account then the deletion of account process removed automatically.
 
+![diagram-export-1-28-2024-8_02_55-PM](https://github.com/parthmern/StudyNotion/assets/125397720/691687c7-1da7-4848-b975-c72a3242802c)
