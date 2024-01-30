@@ -52,6 +52,7 @@ export default function ChangeProfilePicture() {
       await dispatch(updateDisplayPicture(token, formData)).then(() => {
         setLoading(false)
       })
+      
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }

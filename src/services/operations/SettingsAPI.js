@@ -33,18 +33,21 @@ export function updateDisplayPicture(token, formData) {
         response
       )
 
-    //   if (!response.data.success) {
-    //     throw new Error(response.data.message)
-    //   }
-
-      console.log("response.response.data.success ==> ", response.response.data.success );
-
-      if(response.response.data.success == "false"){
-        toast.error(response.response.data.message);
+      if (!response?.data.success) {
+        throw new Error(response?.data.message)
       }
 
+      console.log("user data ==> ", response?.data?.data );
+
+      // if(response?.data.success == "false"){
+      //   toast.error(response?.data.message);
+      // }
+
       toast.success("Display Picture Updated Successfully")
-      dispatch(setUser(response.data.data))
+
+      dispatch(setUser(response?.data?.data));
+      //localStorage.setItem("user", JSON.stringify(response?.data?.user));
+
     } catch (error) {
       console.log("UPDATE_DISPLAY_PICTURE_API API ERROR............==>", error)
       toast.error("Could Not Update Display Picture");

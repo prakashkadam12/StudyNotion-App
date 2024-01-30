@@ -14,6 +14,7 @@ import Contact from "./pages/Contact";
 import Dashboard from "./pages/Dashboard";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import Settings from "./components/core/Dashboard/Settings/Setting";
+import EnrolledCourses from "./components/core/Dashboard/Settings/EnrolledCourses";
 
 function App() {
 
@@ -43,7 +44,8 @@ function App() {
             {/* outlet wala route */}
             <Route path="/dashboard/my-profile" element={<MyProfile/>} />
             <Route path="/dashboard/settings" element={<Settings/>} />
-        
+            <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses />} />
+            
         </Route>
 
         
