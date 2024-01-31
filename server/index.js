@@ -47,7 +47,7 @@ app.use("/api/v1/payment", paymentRoutes);
 //def route
 
 app.get("/", (req, res) => {
-	res.send("server running successfully 💚->> made by @parthmern with 💚")
+	res.send("Server running successfully 💚->> made by <a href='https://github.com/parthmern' target='_blank'>@parthmern</a> with 💚");
 	return res.json({
 		success:true,
 		message:'Your server is up and running....'

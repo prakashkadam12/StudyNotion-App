@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import Navbar from "./components/common/Navbar";
@@ -15,11 +15,16 @@ import Dashboard from "./pages/Dashboard";
 import MyProfile from "./components/core/Dashboard/MyProfile";
 import Settings from "./components/core/Dashboard/Settings/Setting";
 import EnrolledCourses from "./components/core/Dashboard/Settings/EnrolledCourses";
+import { useDispatch, useSelector } from "react-redux";
+import { ACCOUNT_TYPE } from "./utils/constants";
+import Cart from "./components/core/Dashboard/Cart/Cart";
 
 function App() {
 
-  
+  const dispatch = useDispatch();
+  const navigate = useNavigate() ;
 
+  const {user} = useSelector((state)=> state.profile);
 
 
   return (
@@ -44,7 +49,15 @@ function App() {
             {/* outlet wala route */}
             <Route path="/dashboard/my-profile" element={<MyProfile/>} />
             <Route path="/dashboard/settings" element={<Settings/>} />
-            <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses />} />
+            
+            {
+              user?.accountType == ACCOUNT_TYPE.STUDENT && (
+                <>
+                  <Route path="/dashboard/cart" element={<Cart/>} />
+                  <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses />} />
+                </>
+              )
+            }
             
         </Route>
 
