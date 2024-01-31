@@ -1,4 +1,5 @@
 import React from "react";
+import RenderSteps from "./RenderSteps";
 
 const AddCourse = () => {
   return (

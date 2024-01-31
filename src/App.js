@@ -18,6 +18,7 @@ import EnrolledCourses from "./components/core/Dashboard/Settings/EnrolledCourse
 import { useDispatch, useSelector } from "react-redux";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import Cart from "./components/core/Dashboard/Cart/Cart";
+import AddCourse from "./components/core/Dashboard/AddCourse/AddCourse";
 
 function App() {
 
@@ -58,6 +59,8 @@ function App() {
                 </>
               )
             }
+
+            <Route path="/dashboard/add-course" element={<AddCourse />} />
             
         </Route>
 
