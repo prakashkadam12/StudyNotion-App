@@ -6,6 +6,11 @@ import {fetchCourseCategories} from "../../../../../services/operations/courseDe
 import { HiOutlineCurrencyRupee } from "react-icons/hi"
 import ChipInput from "./ChipInput";
 import Upload from "./Upload";
+import RequirementsField from "./RequirementField";
+
+import { MdNavigateNext } from "react-icons/md";
+import { setCourse, setStep } from "../../../../../slices/courseSlice"
+import IconBtn from "../../../../common/IconBtn"
 
 const CourseInformationForm = () => {
 
@@ -180,6 +185,55 @@ const CourseInformationForm = () => {
             errors={errors}
             editData={editCourse ? course?.thumbnail : null}
           />
+
+
+          {/* Benefits of course */}
+          <div className="flex flex-col space-y-2">
+            <label className="text-sm text-richblack-5" htmlFor="courseBenefits">
+              Benefits of the course <sup className="text-pink-200">*</sup>
+            </label>
+            <textarea
+              id="courseBenefits"
+              placeholder="Enter benefits of the course"
+              {...register("courseBenefits", { required: true })}
+              className="form-style resize-x-none min-h-[130px] w-full"
+            />
+            {errors.courseBenefits && (
+              <span className="ml-2 text-xs tracking-wide text-pink-200">
+                Benefits of the course is required
+              </span>
+            )}
+          </div>
+
+          {/* Requirements/Instructions */}
+          <RequirementsField
+            name="courseRequirements"
+            label="Requirements/Instructions"
+            register={register}
+            setValue={setValue}
+            errors={errors}
+            getValues={getValues}
+          />
+
+          {/* Next Button */}
+          <div className="flex justify-end gap-x-2">
+            {editCourse && (
+              <button
+                onClick={() => dispatch(setStep(2))}
+                disabled={loading}
+                className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}
+              >
+                Continue Wihout Saving
+              </button>
+            )}
+            <IconBtn
+              disabled={loading}
+              text={!editCourse ? "Next" : "Save Changes"}
+            >
+              <MdNavigateNext />
+            </IconBtn>
+          </div>
+
 
 
         </form>
