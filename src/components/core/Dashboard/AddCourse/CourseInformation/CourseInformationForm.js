@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {fetchCourseCategories} from "../../../../../services/operations/courseDetailsAPI" ;
 
 import { HiOutlineCurrencyRupee } from "react-icons/hi"
+import ChipInput from "./ChipInput";
+import Upload from "./Upload";
 
 const CourseInformationForm = () => {
 
@@ -157,6 +159,27 @@ const CourseInformationForm = () => {
               </span>
             )}
           </div>
+
+          {/* Tags */}
+          <ChipInput
+            label="Tags"
+            name="courseTags"
+            placeholder="Enter Tags and press Enter"
+            register={register}
+            errors={errors}
+            setValue={setValue}
+            getValues={getValues}
+          />
+
+          {/* Course Thumbnail Upload section */}
+          <Upload
+            name="courseImage"
+            label="Course Thumbnail"
+            register={register}
+            setValue={setValue}
+            errors={errors}
+            editData={editCourse ? course?.thumbnail : null}
+          />
 
 
         </form>
