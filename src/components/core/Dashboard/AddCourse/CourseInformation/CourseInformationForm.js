@@ -9,8 +9,17 @@ import Upload from "./Upload";
 import RequirementsField from "./RequirementField";
 
 import { MdNavigateNext } from "react-icons/md";
-import { setCourse, setStep } from "../../../../../slices/courseSlice"
-import IconBtn from "../../../../common/IconBtn"
+import { setCourse, setStep } from "../../../../../slices/courseSlice";
+import IconBtn from "../../../../common/IconBtn";
+
+import { COURSE_STATUS } from "../../../../../utils/constants"
+
+import {
+  addCourseDetails,
+  editCourseDetails,
+
+} from "../../../../../services/operations/courseDetailsAPI"
+import toast from "react-hot-toast";
 
 const CourseInformationForm = () => {
 
@@ -24,6 +33,7 @@ const CourseInformationForm = () => {
 
   const dispatch = useDispatch() ;
   const {course, editCourse} = useSelector((state)=> state.course);
+  const { token } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false) ;
 
   const [courseCategories, setCourseCategories] = useState([]);
@@ -54,9 +64,128 @@ const CourseInformationForm = () => {
 
   }, [])
 
+  // form update or changes function detector and updator
+  const isFormUpdated = () => {
+    const currentValues = getValues();
+
+    console.log("changes after editing form values:", currentValues)
+    if (
+      currentValues.courseTitle !== course.courseName ||
+      currentValues.courseShortDesc !== course.courseDescription ||
+      currentValues.coursePrice !== course.price ||
+      currentValues.courseTags.toString() !== course.tag.toString() ||
+      currentValues.courseBenefits !== course.whatYouWillLearn ||
+      currentValues.courseCategory._id !== course.category._id ||
+      currentValues.courseRequirements.toString() !==
+        course.instructions.toString() ||
+      currentValues.courseImage !== course.thumbnail
+    ) {
+      return true
+    }
+    return false
+  }
+
   
 
   const onSubmit = async(data) =>{
+    console.log("submit clicked");
+    
+    console.log("here ----0");
+    if(editCourse){
+
+      
+      // if form is updated then
+      if(isFormUpdated()){
+        console.log("here ----1");
+          const currentValues = getValues();
+
+          const formData = new FormData() ;
+          formData.append("courseId", course._id)
+    
+          // we are appending manually for each field
+          if (currentValues.courseTitle !== course.courseName) {
+            formData.append("courseName", data.courseTitle)
+          }
+          if (currentValues.courseShortDesc !== course.courseDescription) {
+            formData.append("courseDescription", data.courseShortDesc)
+          }
+          if (currentValues.coursePrice !== course.price) {
+            formData.append("price", data.coursePrice)
+          }
+          if (currentValues.courseTags.toString() !== course.tag.toString()) {
+            formData.append("tag", JSON.stringify(data.courseTags))
+          }
+          if (currentValues.courseBenefits !== course.whatYouWillLearn) {
+            formData.append("whatYouWillLearn", data.courseBenefits)
+          }
+          if (currentValues.courseCategory._id !== course.category._id) {
+            formData.append("category", data.courseCategory)
+          }
+          if (
+            currentValues.courseRequirements.toString() !==
+            course.instructions.toString()
+          ) {
+            formData.append(
+              "instructions",
+              JSON.stringify(data.courseRequirements)
+            )
+          }
+          if (currentValues.courseImage !== course.thumbnail) {
+            formData.append("thumbnailImage", data.courseImage)
+          }
+
+          // loading is gone be true
+          setLoading(true);
+
+          // now putting api call
+          console.log("formData ==>", formData);
+
+          const result = await editCourseDetails(formData, token) ;
+          console.log("💚 result ==>", result);
+
+          setLoading(false);
+
+          // if result is true - successfull
+          if (result) {
+            dispatch(setStep(2))
+            dispatch(setCourse(result))
+          }
+          else{
+            toast.error("No changes done for form") ;
+          }
+
+          return ;
+    
+        }
+        
+    }
+
+    console.log("here ----2");
+    // ==============================
+    // create New Course
+    const formData = new FormData()
+    formData.append("courseName", data.courseTitle)
+    formData.append("courseDescription", data.courseShortDesc)
+    formData.append("price", data.coursePrice)
+    formData.append("tag", JSON.stringify(data.courseTags))
+    formData.append("whatYouWillLearn", data.courseBenefits)
+    formData.append("category", data.courseCategory)
+    formData.append("status", COURSE_STATUS.DRAFT)
+    formData.append("instructions", JSON.stringify(data.courseRequirements))
+    formData.append("thumbnailImage", data.courseImage)
+    setLoading(true);
+
+    console.log("formData ==>", formData);
+
+    // api call
+    const result = await addCourseDetails(formData, token);
+    console.log("💚 result ==>", result);
+    if (result) {
+      dispatch(setStep(2))
+      dispatch(setCourse(result))
+    }
+    setLoading(false);
+
 
   }
 
@@ -239,8 +368,6 @@ const CourseInformationForm = () => {
         </form>
 
       
-
-
     </div>
   )
 
