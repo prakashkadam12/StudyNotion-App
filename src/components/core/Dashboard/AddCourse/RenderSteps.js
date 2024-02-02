@@ -1,7 +1,7 @@
 import { FaCheck } from "react-icons/fa";
 import { useSelector } from "react-redux";
 
-// import CourseBuilderForm from "./CourseBuilder/CourseBuilderForm";
+import CourseBuilderForm from "./CourseBuilder/CourseBuilderForm";
 import CourseInformationForm from "./CourseInformation/CourseInformationForm";
 // import PublishCourse from "./PublishCourse";
 
@@ -80,10 +80,11 @@ function RenderSteps() {
             {/* wo forms ko steps k according bata rahe hai*/}
 
             {/* 
-                {step === 2 && <CourseBuilderForm />}
+               
                 {step === 3 &&  <PublishCourse /> } */}
 
             {step === 1 && <CourseInformationForm />}
+            {step === 2 && <CourseBuilderForm />}
         </>
     );
 }
