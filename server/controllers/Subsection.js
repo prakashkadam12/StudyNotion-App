@@ -122,6 +122,7 @@ exports.createSubSection = async (req, res) => {
   
       return res.json({
         data : updatedSection ,
+        updatedSection,
         success: true,
         message: "SubSection deleted successfully",
       })
