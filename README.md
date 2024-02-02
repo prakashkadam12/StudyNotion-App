@@ -106,3 +106,6 @@ app.post('/payment-success', (req, res) => {
 - Learn about Delete account feature like if person clicked on DELETE account then it will put request in backend but it will not be successfully excecuted instat. We can set time like it will excecuted after 10 days or something and add extra feature that during 10 days if user loggedin with same account then the deletion of account process removed automatically.
 
 ![diagram-export-1-28-2024-8_02_55-PM](https://github.com/parthmern/StudyNotion/assets/125397720/691687c7-1da7-4848-b975-c72a3242802c)
+
+- working with edit/create course with creating section and sub section is difficult for me.It takes hours of time. After hit and trial, one modal is successfully working.
+
