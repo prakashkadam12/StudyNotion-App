@@ -109,3 +109,4 @@ app.post('/payment-success', (req, res) => {
 
 - working with edit/create course with creating section and sub section is difficult for me.It takes hours of time. After hit and trial, one modal is successfully working.
 
+- onclick ==> e.stopPropogation() while one div has onclick and that child div also has onclick so when we clicking on the main div that time child div's onclick is also working so that ttime using e.stopPropogation() for child div to avoid this and giving the partiular div onclick working.
