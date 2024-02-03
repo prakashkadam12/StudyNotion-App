@@ -28,8 +28,8 @@ const MyCourses = () => {
 
     return(
         <div>
-            <div>
-                <h1>My Courses</h1>
+            <div className="flex items-center justify-between mb-5">
+                <h1 className="text-white text-xl font-bold">My Courses</h1>
                 <IconBtn
                     text="Add Courses"
                     onclick={()=>{navigate("/dashboard/add-course")}}

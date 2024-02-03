@@ -21,6 +21,7 @@ import Cart from "./components/core/Dashboard/Cart/Cart";
 import AddCourse from "./components/core/Dashboard/AddCourse/AddCourse";
 import CoursesTable from "./components/core/Dashboard/Instructor Courses/CourseTable";
 import MyCourses from "./components/core/Dashboard/AddCourse/MyCourse";
+import EditCourse from "./components/core/Dashboard/EditCourse/EditCourse";
 
 function App() {
 
@@ -65,6 +66,8 @@ function App() {
             <Route path="/dashboard/add-course" element={<AddCourse />} />
 
             <Route path="/dashboard/my-courses" element={<MyCourses/>} />
+            
+            <Route path="/dashboard/edit-course/:courseId" element={<EditCourse />} />
             
         </Route>
 
