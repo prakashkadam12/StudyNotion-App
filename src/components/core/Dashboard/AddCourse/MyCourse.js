@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchInstructorCourses } from "../../../../services/operations/courseDetailsAPI";
 import IconBtn from "../../../common/IconBtn";
+import CoursesTable from "../Instructor Courses/CourseTable";
 
 const MyCourses = () => {
 
