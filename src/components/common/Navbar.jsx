@@ -76,11 +76,11 @@ const Navbar = () =>{
                                                         </div>
 
                                                         {
-                                                            subLinks.length ? (
+                                                                subLinks.length ? (
                                                                 subLinks.map((subLink, index)=>{
                                                                     return(
-                                                                        <Link className="text-black p-2" to={`${subLink.link}`} key={index} >
-                                                                            <p>{subLink?.title}</p>
+                                                                        <Link className="text-black p-2 hover:bg-richblack-500 transition-all duration-200 " to={`catalog/${subLink?.name}`} key={index} >
+                                                                            <p>{subLink?.name}</p>
                                                                         </Link>
                                                                     )
                                                                 })
