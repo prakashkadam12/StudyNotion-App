@@ -7,6 +7,8 @@ const Section = require("../models/Section")
 const SubSection = require("../models/Subsection")
 const CourseProgress = require("../models/CourseProgress")
 
+const { convertSecondsToDuration } = require("../utils/secToDuration");
+
 // Function to create a new course
 exports.createCourse = async (req, res) => {
 	try {

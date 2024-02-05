@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {categories} from "../services/apis" ;
 import {apiConnector} from "../services/apiconnector";
+import { getCatalogaPageData } from '../services/operations/pageAndComponentData';
 
 const Catalog = () =>{
 
@@ -11,26 +12,52 @@ const Catalog = () =>{
 
 
     useEffect(()=>{
-        const getCatagoryDetails = async () => {
+        const getCategories = async () => {
             const res = await apiConnector("GET", categories.CATEGORIES_API);
+            console.log("res==>", res) ;
+
+            const category_id = res?.data?.data?.filter((ct) => ct.name.split(" ").join("-").toLowerCase() === catalogName)[0]._id;
+            console.log("catid", category_id);
+            setCatagoryId(category_id);
         }
+        getCategories();
     },[catalogName]);
+
+    useEffect(()=>{
+        const getCatagoryDetails = async () => {
+            try{
+
+                const res = await getCatalogaPageData(categoryId) ;
+                setCatalogPageData(res);
+
+            }
+            catch(error) {
+                console.log("error=>", error) ;
+            }
+        }
+        getCatagoryDetails();
+    }, [categoryId])
+
+    console.log("catalogPageData= >", catalogPageData) ;
 
     return(
         <>
             {/* staring of catalog page */}
-            <div>
+            <div className="text-white">
 
                 <p>
-
+                    {`Home / Catalog /`}
+                    <span>
+                        {catalogPageData?.data?.selectedCatagory?.name}
+                    </span>
                 </p>
 
                 <p>
-
+                    {catalogPageData?.data?.selectedCatagory?.name}
                 </p>
 
                 <p>
-
+                    {catalogPageData?.data?.selectedCatagory?.description}
                 </p>
 
             </div>
