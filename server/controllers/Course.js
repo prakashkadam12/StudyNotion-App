@@ -60,6 +60,9 @@ exports.createCourse = async (req, res) => {
 			});
 		}
 
+		// console category
+		console.log("category id setting while creating coourse=>", category);
+
 		// Check if the tag given is valid
 		const categoryDetails = await Category.findById(category);
 		if (!categoryDetails) {
@@ -101,11 +104,11 @@ exports.createCourse = async (req, res) => {
 			{ new: true }
 		);
 		// Add the new course to the Categories
-		await Category.findByIdAndUpdate(
+		const updatedCat = await Category.findByIdAndUpdate(
 			{ _id: category },
 			{
 				$push: {
-					course: newCourse._id,
+					courses: newCourse._id,
 				},
 			},
 			{ new: true }
@@ -114,6 +117,7 @@ exports.createCourse = async (req, res) => {
 		res.status(200).json({
 			success: true,
 			data: newCourse,
+			updatedCat,
 			message: "Course Created Successfully",
 		});
 	} catch (error) {
@@ -354,7 +358,7 @@ exports.getFullCourseDetails = async (req, res) => {
   exports.getInstructorCourses = async (req, res) => {
 	try {
 	  // Get the instructor ID from the authenticated user or request body
-	  const instructorId = req.user.id
+	  const instructorId = req.user.id ;
   
 	  // Find all courses belonging to the instructor
 	  const instructorCourses = await Course.find({
