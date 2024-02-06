@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import {categories} from "../services/apis" ;
 import {apiConnector} from "../services/apiconnector";
 import { getCatalogaPageData } from '../services/operations/pageAndComponentData';
+import CourseCard from "../components/core/Catalog/CourseCard";
 
 const Catalog = () =>{
 
@@ -97,6 +98,15 @@ const Catalog = () =>{
                 {/* section 3 */}
                 <div className=" mx-auto box-content w-full max-w-maxContentTab  py-12 lg:max-w-maxContent">
                     <p className="section_heading">Frequently Bought Together</p>
+
+                    <div className="py-8">
+                        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                        {catalogPageData?.data?.mostSellingCourses?.slice(0, 4).map((course, i) => (
+                                <CourseCard course={course} key={i} Height={"h-[400px]"} />
+                         ))}
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
