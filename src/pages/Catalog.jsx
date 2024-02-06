@@ -10,6 +10,9 @@ const Catalog = () =>{
     const [catalogPageData, setCatalogPageData] = useState(null) ;
     const [categoryId, setCatagoryId] = useState("");
 
+    const [active, setActive] = useState(1) ;
+
+
 
     useEffect(()=>{
         const getCategories = async () => {
@@ -43,23 +46,22 @@ const Catalog = () =>{
     return(
         <>
             {/* staring of catalog page */}
-            <div className="text-white">
-
-                <p>
-                    {`Home / Catalog /`}
-                    <span>
-                        {catalogPageData?.data?.selectedCatagory?.name}
+    
+            <div className=" box-content bg-richblack-800 px-4">
+                <div className="mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent ">
+                <p className="text-sm text-richblack-300">
+                    {`Home / Catalog / `}
+                    <span className="text-yellow-25">
+                    {catalogPageData?.data?.selectedCategory?.name}
                     </span>
                 </p>
-
-                <p>
-                    {catalogPageData?.data?.selectedCatagory?.name}
+                <p className="text-3xl text-richblack-5">
+                    {catalogPageData?.data?.selectedCategory?.name}
                 </p>
-
-                <p>
-                    {catalogPageData?.data?.selectedCatagory?.description}
+                <p className="max-w-[870px] text-richblack-200">
+                    {catalogPageData?.data?.selectedCategory?.description}
                 </p>
-
+                </div>
             </div>
 
             {/* section 1 - Courses to get you started */}
@@ -70,11 +72,15 @@ const Catalog = () =>{
                 <div className="my-4 flex border-b border-b-richblack-600 text-sm">
                     
                     {/* selection slider */}
-                    <p>
+                    <p 
+                    className={`px-4 py-2 ${ active === 1 ? "border-b border-b-yellow-25 text-yellow-25": "text-richblack-50"} cursor-pointer`}
+                    onClick={() => setActive(1)}>
                         Most Popular
                     </p>
 
-                    <p>
+                    <p
+                    className={`px-4 py-2 ${ active === 2 ? "border-b border-b-yellow-25 text-yellow-25": "text-richblack-50"} cursor-pointer`}
+                    onClick={() => setActive(2)}>
                         New
                     </p>
 
@@ -82,14 +88,14 @@ const Catalog = () =>{
                 
                 {/* course Slider */}
                 <div>
-                    <p>Top Courses</p>
+                    <p className="section_heading">Top Courses </p>
                     <div>
                         
                     </div>
                 </div>
                 
                 {/* section 3 */}
-                <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+                <div className=" mx-auto box-content w-full max-w-maxContentTab  py-12 lg:max-w-maxContent">
                     <p className="section_heading">Frequently Bought Together</p>
                 </div>
 
