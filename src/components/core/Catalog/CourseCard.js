@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 
 import RatingStars from '../../common/RatingStars'
-import GetAvgRating from '../../../utils/avgRating';
+import GetAvgRating from '../../../utils/avgRating.js';
 
-const CourseCard = () => {
+const CourseCard = ({course, Height}) => {
 
     const [avgReviewCount, setAvgReviewCount] = useState(0);
 
@@ -17,6 +17,8 @@ const CourseCard = () => {
     <>
         <Link to={`/courses/${course._id}`}>
           <div className="">
+            
+            {/* thumbnail */}
             <div className="rounded-lg">
               <img
                 src={course?.thumbnail}
@@ -24,6 +26,8 @@ const CourseCard = () => {
                 className={`${Height} w-full rounded-xl object-cover `}
               />
             </div>
+            
+            {/* details of course */}
             <div className="flex flex-col gap-2 px-1 py-3">
               <p className="text-xl text-richblack-5">{course?.courseName}</p>
               <p className="text-sm text-richblack-50">
@@ -38,6 +42,7 @@ const CourseCard = () => {
               </div>
               <p className="text-xl text-richblack-5">Rs. {course?.price}</p>
             </div>
+
           </div>
         </Link>
     </>
