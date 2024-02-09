@@ -28,6 +28,8 @@ const Catalog = () =>{
         getCategories();
     },[catalogName]);
 
+    console.log("categoryId=>", categoryId);
+
     useEffect(()=>{
         const getCatagoryDetails = async () => {
             try{
@@ -40,7 +42,10 @@ const Catalog = () =>{
                 console.log("error=>", error) ;
             }
         }
-        getCatagoryDetails();
+        if(categoryId){
+            getCatagoryDetails();
+        }
+        
     }, [categoryId])
 
     console.log("catalogPageData= >", catalogPageData) ;
