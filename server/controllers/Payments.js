@@ -101,10 +101,124 @@ exports.capturePayment = async (req, res) =>{
             )
         }
 
+    }
 
+}
+
+// VERIFIED PAYMENT == verify Signature of Razorpay and Server
+// webhook in razorpay hit this api
+exports.verifyPayment = async(req, res) =>{
+
+    require('dotenv').config();
+
+    const razorpay_order_id = req.body?.razorpay_order_id ;
+    const razorpay_payment_id = req.body?.razorpay_payment_id ;
+    const razorpay_signature = req.body?.razorpay_signature;
+    const courses = req.body?.courses ;
+    const userId = req.user.id ;
+
+    if(!razorpay_order_id || !razorpay_payment_id || !razorpay_signature || !courses || !userId){
+        return(
+            res.status(200).json(
+                {
+                    success : false ,
+                    message : "Payment Failed" ,
+                }
+            )
+        )
+    }
+
+    let body = razorpay_order_id + "|" + razorpay_payment_id ;
+    const expectedSignature = crypto.createHmac("sha256", process.env.RAZORPAY_SECRET).update(body.toString()).digest("hex"); 
+
+    // match ho gyi signature to 
+    if(expectedSignature === razorpay_signature){
+
+        // enroll the student in the course
+        const enrolledStudent = await enrollStudent(courses, userId, res);
+        
+
+        // return
+        return(
+            res.status(200).json(
+                {
+                    success: true,
+                    message: "enrolled success fully = payment verifed= purchased successfully",
+
+                }
+            )
+        )
 
     }
 
+
+    return(
+        res.status(200).json(
+            {
+                success : "false",
+                message : "Payment Failed", 
+            }
+        )
+    )
+
+}
+
+
+const enrollStudent = async(courses, userId, res) =>{
+
+    if(!courses || !userId ){
+        return(
+            res.status(400).json(
+                {
+                    success : false ,
+                    message : "Please provide data for courses or userId" ,
+                }
+            )
+        )
+    }
+
+    for(const courseId of courses){
+        // find the each course and then add user in the enrollment
+        const enrolledCourse = await Course.findByIdAndUpdate(
+            {
+                _id : courseId
+            },
+            {
+                $push : {
+                    studentsEnrolled : userId 
+                }
+            },
+            {
+                new : true 
+            },
+        )
+
+        if(!enrolledCourse){
+            return(
+                res.status(500).json(
+                    {
+                        success : false ,
+                        message : "Course not found" ,
+                    }
+                )
+            )
+        }
+
+        // find the course and add the course to their list of enrolledCourses
+        const enrolledStudent = await User.findByIdAndUpdate(
+            userId ,
+            {
+                $push : {
+                    courseID : courseId ,
+                }
+            },
+            {
+                new : true ,
+            }
+        )
+
+
+    }
 
 }
 
