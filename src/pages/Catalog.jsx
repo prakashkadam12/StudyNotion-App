@@ -71,7 +71,7 @@ const Catalog = () =>{
                 
                 <div className="section_heading ">Courses to get you started</div>
 
-                <div className="my-4 flex border-b border-b-richblack-600 text-sm">
+                <div className="my-4 flex border-b w-[100%] border-b-richblack-600 text-sm">
                     
                     {/* selection slider */}
                     <p 
@@ -86,11 +86,16 @@ const Catalog = () =>{
                         New
                     </p>
 
-                    <CourseSlider
-                        Courses={catalogPageData?.data?.selectedCategory?.courses}
-                    />
+                    
+                    
 
                 </div>
+
+                
+                    <CourseSlider 
+                        Courses={catalogPageData?.data?.selectedCategory?.courses}
+                    />
+                    
                 
                 {/* course Slider */}
                 <div>
