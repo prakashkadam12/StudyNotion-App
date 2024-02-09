@@ -163,7 +163,7 @@ exports.verifyPayment = async(req, res) =>{
 
 }
 
-
+// function to enroll the student in the particular course
 const enrollStudent = async(courses, userId, res) =>{
 
     if(!courses || !userId ){
@@ -177,45 +177,73 @@ const enrollStudent = async(courses, userId, res) =>{
         )
     }
 
+    // if there are more than ONE course so here we are in the LOOP 
+    // by using loop we can work for every course one by one
     for(const courseId of courses){
-        // find the each course and then add user in the enrollment
-        const enrolledCourse = await Course.findByIdAndUpdate(
-            {
-                _id : courseId
-            },
-            {
-                $push : {
-                    studentsEnrolled : userId 
-                }
-            },
-            {
-                new : true 
-            },
-        )
+        
+        try{
 
-        if(!enrolledCourse){
+            // find the each course and then add user in the enrollment
+            const enrolledCourse = await Course.findByIdAndUpdate(
+                {
+                    _id : courseId
+                },
+                {
+                    $push : {
+                        studentsEnrolled : userId 
+                    }
+                },
+                {
+                    new : true 
+                },
+            )
+
+            if(!enrolledCourse){
+                return(
+                    res.status(500).json(
+                        {
+                            success : false ,
+                            message : "Course not found" ,
+                        }
+                    )
+                )
+            }
+
+            // find the course and add the course to their list of enrolledCourses
+            const enrolledStudent = await User.findByIdAndUpdate(
+                userId ,
+                {
+                    $push : {
+                        courses : courseId ,
+                    }
+                },
+                {
+                    new : true ,
+                }
+            )
+
+            // email send to user if user successfully enrolled
+            const emailResponse = await mailSender(
+                enrollStudent.email,
+                `Successfully enrolled in ${enrolledCourse.courseName}`,
+                courseEnrollmentEmail(enrolledCourse.courseName, `${enrollStudent.firstName}`)
+            )
+            if(emailResponse){
+                console.log("email sent successfully", emailResponse.response);
+            }
+        }
+        catch(error){
+            console.log("error=>", error);
             return(
                 res.status(500).json(
                     {
-                        success : false ,
-                        message : "Course not found" ,
+                        success : false,
+                        message : "ERROR in enrollemnt of studnet in course",
+                        error,
                     }
                 )
             )
         }
-
-        // find the course and add the course to their list of enrolledCourses
-        const enrolledStudent = await User.findByIdAndUpdate(
-            userId ,
-            {
-                $push : {
-                    courseID : courseId ,
-                }
-            },
-            {
-                new : true ,
-            }
-        )
 
 
     }
