@@ -26,19 +26,22 @@ const CourseSlider = ({Courses}) => {
           slidesPer
           View={1}
           spaceBetween={25}
-          loop={true}
+          loop={false}
           className="mySwiper"
           autoplay={{
             delay: 2000, // Change slides every 2 seconds
             disableOnInteraction: true // Enable autoplay even if user interacts with slides
         }}
           modules={[FreeMode, Pagination]}
+          pagination={{
+            clickable:true
+          }}
           breakpoints={{
             1024: {
               slidesPerView: 3,
             },
           }}
-          className="max-h-[30rem] w-fitContent"
+          
         >
           {Courses?.map((course, i) => (
             <SwiperSlide key={i}>
