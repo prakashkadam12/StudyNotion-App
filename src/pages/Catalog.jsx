@@ -4,6 +4,7 @@ import {categories} from "../services/apis" ;
 import {apiConnector} from "../services/apiconnector";
 import { getCatalogaPageData } from '../services/operations/pageAndComponentData';
 import CourseCard from "../components/core/Catalog/CourseCard";
+import CourseSlider from "../components/core/Catalog/CourseSlider"; 
 
 const Catalog = () =>{
 
@@ -85,13 +86,17 @@ const Catalog = () =>{
                         New
                     </p>
 
+                    <CourseSlider
+                        Courses={catalogPageData?.data?.selectedCategory?.courses}
+                    />
+
                 </div>
                 
                 {/* course Slider */}
                 <div>
                     <p className="section_heading">Top Courses </p>
                     <div>
-                        
+                        <CourseSlider Courses={catalogPageData?.data?.differentCategory?.courses} />
                     </div>
                 </div>
                 
