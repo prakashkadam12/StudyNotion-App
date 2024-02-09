@@ -210,8 +210,8 @@ exports.getCourseDetails = async (req, res) => {
     }
 }
 
-
-// Edit Course Details
+//EDITTTTT
+// TODO : HAVE TO fix it 
 exports.editCourse = async (req, res) => {
 	try {
 	  const { courseId } = req.body

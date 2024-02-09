@@ -1,41 +1,48 @@
-import React from "react";
-import Swiper from "swiper";
+import React from 'react'
 
-import CourseCard from "./CourseCard";
-import {  SwiperSlide } from 'swiper/react';
+import {Swiper, SwiperSlide} from "swiper/react"
 
-const CourseSlider = ({Courses}) =>{
+import { Autoplay,FreeMode,Navigation, Pagination}  from 'swiper/modules'
+import "swiper/css"
+import "swiper/css/free-mode"
+import "swiper/css/pagination"
 
-    return(
-        <div>
 
-            {/* going to use SWIPER JS for slider so it is easy */}
+// import 'swiper/css';
+// import 'swiper/css/pagination';
 
-            {
-                Courses?.length ? (
-                    
-                    <div className="mySwiper">
-                        <Swiper>
-                            {
-                                Courses?.map((course, index)=>{
-                                    return(
-                                        <SwiperSlide key={index}>
-                                            <CourseCard course={course} Height={"h-[250px]"} /> 
-                                        </SwiperSlide>
-                                    )
-                                })
-                            }
-                        </Swiper>
-                    </div>
-                ) : (
-                    <div>
-                        No course found
-                    </div>
-                )
-            }
+// import { Pagination } from 'swiper/modules';
+import CourseCard from './CourseCard'
 
-        </div>
-    )
+const CourseSlider = ({Courses}) => {
+  return (
+    <>
+      {Courses?.length ? (
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={25}
+          loop={true}
+          pagination={true} 
+
+          modules={[FreeMode, Pagination]}
+          breakpoints={{
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+          className="max-h-[30rem]"
+        >
+          {Courses?.map((course, i) => (
+            <SwiperSlide key={i}>
+              <CourseCard course={course} Height={"h-[250px]"} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      ) : (
+        <p className="text-xl text-richblack-5">No Course Found</p>
+      )}
+    </>
+  )
 }
 
 export default CourseSlider ;
