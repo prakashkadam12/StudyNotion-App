@@ -95,3 +95,19 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
     }
     toast.dismiss(toastId);
 }
+
+// =========================================
+// 3) 
+
+async function sendPaymentSuccessMail(response, amount, token) {
+
+    try{
+
+        
+
+    }
+    catch(error){
+        console.log("error=>", error ); 
+    }
+
+}

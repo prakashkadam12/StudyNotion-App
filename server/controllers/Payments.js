@@ -250,7 +250,55 @@ const enrollStudent = async(courses, userId, res) =>{
 
 }
 
+exports.sendPaymentSuccessEmail = async(req, res)=>{
+    const {orderId, paymentId, amount} = req.body ;
 
+    const userId = req.user.id ;
+
+    if(!orderId || !paymentId || !amount || !userId){
+        return(
+            res.status(400).json(
+                {
+                    success : false,
+                    message : "plz provide all details"
+                }
+            )
+        )
+    }
+
+    try{
+        // find student
+        const enrolledStudent = await User.findById(userId);
+        const sendedMail = await mailSender(
+            enrollStudent.email,
+            `Payment Received` ,
+            paymentSuccessEmail(`${enrollStudent.firstName}`, amount/100 , orderId, paymentId) 
+        )
+
+        return(
+            res.status(200).json(
+                {
+                    success : true ,
+                    message : "mail send succesfully",
+                    sendedMail,
+                }
+            )
+        ) 
+    }
+    catch(error){
+        console.log("error in sending mail=>", error);
+        return(
+            res.status(500).json(
+                {
+                    success : false, 
+                    message : "Could not send email",
+                }
+            )
+        )
+
+    }
+
+}
 
 
 
