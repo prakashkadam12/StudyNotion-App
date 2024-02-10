@@ -28,7 +28,14 @@ exports.capturePayment = async (req, res) =>{
 
     let totalAmount = 0 ;
 
-    for(const course_id of courses){
+    console.log("courses=>", courses);
+
+    // console.log("courses[0].length", courses[0].length);
+    // const coursesMain = courses[0].length > 0 ? courses[0] : courses ;
+    // console.log("coursesMain=>", coursesMain);
+    for(let course_id of courses){
+
+        console.log("this is for ", course_id);
         
         let course ;
         try{
@@ -60,6 +67,8 @@ exports.capturePayment = async (req, res) =>{
                 )
             }
 
+            console.log("course.price", course.price);
+            console.log("totalAmount", totalAmount);
             totalAmount = totalAmount + course.price ;
 
         }
@@ -75,34 +84,36 @@ exports.capturePayment = async (req, res) =>{
             )
         }
 
-        const options = {
-            amount : totalAmount * 100,
-            currency : "INR",
-            receipt : Math.random(Date.now()).toString(),
-        }
+        
 
-        try{
-            const paymentResponse = await instance.orders.create(options);
+    }
 
-            res.json(
-                {
-                    success : true ,
-                    message : paymentResponse ,
-                }
-            )
-            
-        }
-        catch(error){
+    const options = {
+        amount : totalAmount * 100,
+        currency : "INR",
+        receipt : Math.random(Date.now()).toString(),
+    }
 
-            console.log("error=>", error);
-            res.status(500).json(
-                {
-                    success : false ,
-                    message : "Could not initiate payment"
-                }
-            )
-        }
+    try{
+        const paymentResponse = await instance.orders.create(options);
 
+        res.json(
+            {
+                success : true ,
+                message : paymentResponse ,
+            }
+        )
+        
+    }
+    catch(error){
+
+        console.log("error=>", error);
+        res.status(500).json(
+            {
+                success : false ,
+                message : "Could not initiate payment"
+            }
+        )
     }
 
 }

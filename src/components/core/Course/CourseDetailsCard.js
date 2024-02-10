@@ -46,7 +46,8 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
     })
   }
 
-  // console.log("Student already enrolled ", course?.studentsEnroled, user?._id)
+  console.log("Student already enrolled ", course?.studentsEnrolled, user?._id)
+  console.log("student enrolled ys / no =>", course?.studentsEnrolled.includes(user?._id));
 
   return (
     <>
@@ -65,6 +66,8 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
             Rs. {CurrentPrice}
           </div>
           <div className="flex flex-col gap-4">
+
+            {/* user already buy then this or this */}
             <button
               className="yellowButton"
               onClick={
@@ -73,6 +76,9 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
                   : handleBuyCourse
               }
             >
+
+            {/* user already buy then this or this */}
+            
               {user && course?.studentsEnrolled.includes(user?._id)
                 ? "Go To Course"
                 : "Buy Now"}

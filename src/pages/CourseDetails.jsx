@@ -5,10 +5,10 @@ import { buyCourse } from "../services/operations/studentFeaturesAPI";
 import { useNavigate, useParams } from "react-router-dom";
 import GetAvgRating from "../utils/avgRating";
 
-import { formatDate } from "../services/formatDate"
+import  formatDate  from "../utils/dateFormatter.js"
 import { BiInfoCircle } from "react-icons/bi"
 import { HiOutlineGlobeAlt } from "react-icons/hi"
-import { ReactMarkdown } from "react-markdown/lib/react-markdown"
+// import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 import RatingStars from "../components/common/RatingStars"
 import CourseDetailsCard from "../components/core/Course/CourseDetailsCard.js"
 

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
+import {useState} from "react"
 import { useNavigate } from "react-router-dom"
 
 import IconBtn from "../../../common/IconBtn"
@@ -10,11 +11,31 @@ export default function RenderTotalAmount() {
   const { user } = useSelector((state) => state.profile)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [confirmationModal, setConfirmationModal] = useState(null);
+
+  const courseId = cart.map((course) => course._id);
+  console.log("courseIDDDD=>", courseId);
 
   const handleBuyCourse = () => {
-    const courses = cart.map((course) => course._id)
-    //TODO: remove the comment so it will work
-    //buyCourse(token, courses, user, navigate, dispatch)
+
+    const courseId = cart.map((course) => course._id);
+    console.log("courseIDDDD=>", courseId);
+        
+        if(token){
+            buyCourse(token,courseId, user, navigate, dispatch);
+        }
+        else{
+            console.log("token is not there", token);
+            // showing modal that saying u are not loggedin
+            setConfirmationModal({
+                text1 : "you are not loggedin",
+                text2 : "pleasr login to purchase the course", 
+                btn1Text : "Login" ,
+                btn2Text : "Cancel" ,
+                btn1Handler : () => navigate("/login"),  
+                btn2Handler : () => setConfirmationModal(null) ,
+            })
+        }
   }
 
   return (
