@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import GetAvgRating from "../utils/avgRating";
 
 import ConfirmationModal from "../components/common/ConfirmationModal";
-
+import {fetchCourseDetails} from "../services/operations/courseDetailsAPI";
 import Error from "../pages/Error";
 
 const CourseDetails = () =>{
@@ -38,6 +38,23 @@ const CourseDetails = () =>{
                 console.log("result of getFUllcoursedetails=>", result);
                 setCourseData(result);
 
+                console.log("*************",result?.data[0] );
+                const {
+                    _id : course_id ,
+                    courseName , 
+                    courseDescription ,
+                    thumbnail, 
+                    price,
+                    whatYouWillLearn,
+                    courseContent,
+                    ratingAndReviews,
+                    instructor, 
+                    studentsEnrolled,
+                    createdAt
+                } = result?.data[0] ;
+
+                
+
             
             }
             catch(error){
@@ -65,7 +82,7 @@ const CourseDetails = () =>{
 
         // finding total lectures
         let lectures = 0 ;
-        response?.data?.CourseDetails?.courseContent?.forEach((sec) => {
+        courseData?.data?.CourseDetails?.courseContent?.forEach((sec) => {
             lectures += sec.subSection.length || 0 ;
         });
 
@@ -111,8 +128,14 @@ const CourseDetails = () =>{
         )
     }
 
+
+
     return(
-        <div className="flex items-center">
+        <div className="flex items-center flex-col ">
+
+            <p>
+                {}
+            </p>
 
 
         {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}

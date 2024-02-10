@@ -43,6 +43,7 @@ export const getAllCourses = async () => {
 }
 
 export const fetchCourseDetails = async (courseId) => {
+  console.log("fetchCourseDetails going in");
   const toastId = toast.loading("Loading...")
   //   dispatch(setLoading(true));
   let result = null
