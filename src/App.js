@@ -77,7 +77,7 @@ function App() {
 
         <Route path="/catalog/:catalogName" element={<Catalog />} />
 
-        <Route path="/courses/:id" element={<CourseDetails/> } />
+        <Route path="/courses/:courseId" element={<CourseDetails/> } />
 
         
 

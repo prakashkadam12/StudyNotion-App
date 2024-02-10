@@ -144,7 +144,7 @@ exports.verifyPayment = async(req, res) =>{
                 {
                     success: true,
                     message: "enrolled success fully = payment verifed= purchased successfully",
-
+                    enrolledStudent,
                 }
             )
         )
@@ -224,9 +224,9 @@ const enrollStudent = async(courses, userId, res) =>{
 
             // email send to user if user successfully enrolled
             const emailResponse = await mailSender(
-                enrollStudent.email,
+                enrolledStudent.email,
                 `Successfully enrolled in ${enrolledCourse.courseName}`,
-                courseEnrollmentEmail(enrolledCourse.courseName, `${enrollStudent.firstName}`)
+                courseEnrollmentEmail(enrolledCourse.courseName, `${enrolledStudent.firstName}`)
             )
             if(emailResponse){
                 console.log("email sent successfully", emailResponse.response);
@@ -251,16 +251,22 @@ const enrollStudent = async(courses, userId, res) =>{
 }
 
 exports.sendPaymentSuccessEmail = async(req, res)=>{
-    const {orderId, paymentId, amount} = req.body ;
-
+    const {orderId, payment, amount} = req.body ;
+    
+    console.log("req.body=>", req.body);
     const userId = req.user.id ;
 
-    if(!orderId || !paymentId || !amount || !userId){
+    console.log("orderId, payment, amount, userId", orderId, payment, amount, userId);
+    const body = req.body ;
+
+    if(!orderId || !payment || !amount || !userId){
         return(
             res.status(400).json(
                 {
                     success : false,
-                    message : "plz provide all details"
+                    message : "plz provide all details",
+                    orderId,payment, amount, userId,
+                    body,
                 }
             )
         )
@@ -269,10 +275,11 @@ exports.sendPaymentSuccessEmail = async(req, res)=>{
     try{
         // find student
         const enrolledStudent = await User.findById(userId);
+
         const sendedMail = await mailSender(
             enrollStudent.email,
             `Payment Received` ,
-            paymentSuccessEmail(`${enrollStudent.firstName}`, amount/100 , orderId, paymentId) 
+            paymentSuccessEmail(`${enrollStudent.firstName}`, amount/100 , orderId, payment) 
         )
 
         return(
@@ -280,7 +287,9 @@ exports.sendPaymentSuccessEmail = async(req, res)=>{
                 {
                     success : true ,
                     message : "mail send succesfully",
+                    enrolledStudent,
                     sendedMail,
+                    
                 }
             )
         ) 
