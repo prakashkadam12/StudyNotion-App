@@ -150,7 +150,7 @@ async function verifyPayment (bodyData, token, navigate, dispatch){
     const toastId = toast.loading("Verifying Payment...");
     dispatch(setPaymentLoading(true));
     try{
-        const response = await apiConnector("POST", COURSE_PAYMENT_API, bodyData, {
+        const response = await apiConnector("POST", COURSE_VERIFY_API, bodyData, {
             authorization : `Bearer ${token}`,
         });
 

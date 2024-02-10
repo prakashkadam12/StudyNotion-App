@@ -4,7 +4,9 @@ const User = require("../models/User");
 const mailSender = require("../utils/mailSender");
 const {courseEnrollmentEmail} = require("../mail/templates/courseEnrollmentEmail");
 const { default: mongoose } = require("mongoose");
+const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail");
 
+const crypto = require("crypto");
 
 // PAYMENT INITIATE == capture the payment and initiate the Razorpay order
 exports.capturePayment = async (req, res) =>{
@@ -136,7 +138,9 @@ exports.verifyPayment = async(req, res) =>{
 
         // enroll the student in the course
         const enrolledStudent = await enrollStudent(courses, userId, res);
-        
+        console.log("🏊‍♀️🏊🏊‍♂️🤽‍♀️🤽🤽‍♂️🏊‍♀️🏊🏊‍♂️🤽‍♀️🤽🤽‍♂️🏊‍♀️🏊🏊‍♂️🤽‍♀️🤽🤽‍♂️🏊‍♀️🏊🏊‍♂️🤽‍♀️🤽🤽‍♂️");
+        console.log("=====================================================================");
+        //console.log("enrolledStudent",enrolledStudent);
 
         // return
         return(
@@ -198,6 +202,9 @@ const enrollStudent = async(courses, userId, res) =>{
                 },
             )
 
+            console.log("💫⭐️🌟✨⚡️☄️💥🔥 💫⭐️🌟✨⚡️☄️💥🔥💫⭐️🌟✨⚡️☄️💥🔥💫⭐️🌟✨⚡️☄️💥🔥 enrolledCourse=>");
+            console.log(enrolledCourse);
+
             if(!enrolledCourse){
                 return(
                     res.status(500).json(
@@ -221,6 +228,8 @@ const enrollStudent = async(courses, userId, res) =>{
                     new : true ,
                 }
             )
+
+            console.log("💫⭐️🌟✨⚡️☄️💥🔥💫⭐️🌟✨⚡️☄️💥🔥💫⭐️🌟✨⚡️☄️💥🔥enrolledStudent=>", enrolledStudent);
 
             // email send to user if user successfully enrolled
             const emailResponse = await mailSender(
@@ -277,9 +286,9 @@ exports.sendPaymentSuccessEmail = async(req, res)=>{
         const enrolledStudent = await User.findById(userId);
 
         const sendedMail = await mailSender(
-            enrollStudent.email,
+            enrolledStudent.email,
             `Payment Received` ,
-            paymentSuccessEmail(`${enrollStudent.firstName}`, amount/100 , orderId, payment) 
+            paymentSuccessEmail(`${enrolledStudent.firstName}`, amount/100 , orderId, payment) 
         )
 
         return(
