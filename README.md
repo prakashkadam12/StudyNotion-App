@@ -112,3 +112,5 @@ app.post('/payment-success', (req, res) => {
 - onclick ==> e.stopPropogation() while one div has onclick and that child div also has onclick so when we clicking on the main div that time child div's onclick is also working so that ttime using e.stopPropogation() for child div to avoid this and giving the partiular div onclick working.
 
 - swiper js ==> headache for me in import of swiper js components 
+
+- videoDetails with previous,next video is challaenging 
