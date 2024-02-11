@@ -24,6 +24,7 @@ import MyCourses from "./components/core/Dashboard/AddCourse/MyCourse";
 import EditCourse from "./components/core/Dashboard/EditCourse/EditCourse";
 import Catalog from "./pages/Catalog";
 import CourseDetails from "./pages/CourseDetails";
+import ViewCourse from "./pages/ViewCourse";
 
 function App() {
 
@@ -78,6 +79,8 @@ function App() {
         <Route path="/catalog/:catalogName" element={<Catalog />} />
 
         <Route path="/courses/:courseId" element={<CourseDetails/> } />
+
+        <Route path="/view-course" element={<ViewCourse />} />
 
         
 
