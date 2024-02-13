@@ -104,7 +104,7 @@ export function updateProfile(token, formData) {
       const response = await apiConnector("PUT", UPDATE_PROFILE_API, formData, {
         Authorization: `Bearer ${token}`,
       })
-      console.log("💚 UPDATE_PROFILE_API API RESPONSE ==>", response.data.profile)
+      console.log("💚 UPDATE_PROFILE_API API RESPONSE ==>", response.data)
 
       if (!response?.data.success) {
         throw new Error(response.data.message)
@@ -123,8 +123,8 @@ export function updateProfile(token, formData) {
       toast.success("Profile Updated Successfully");
 
       // localstorage update
-      localStorage.setItem("user", JSON.stringify(response.data.profile));
-      dispatch(setUser(response.data.profile));
+      localStorage.setItem("user", JSON.stringify(response.data.updatedUserDetails));
+      dispatch(setUser(response.data.updatedUserDetails));
       
     } catch (error) {
       console.log("UPDATE_PROFILE_API API ERROR............", error)

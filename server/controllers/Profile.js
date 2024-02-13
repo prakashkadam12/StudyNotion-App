@@ -32,7 +32,7 @@ exports.updateProfile = async (req, res) => {
 			{_id: id} ,
 			{firstName, lastName},
 			{new: true}
-		).populate("additionalDetails");
+		).populate("additionalDetails").lean();
 
 		const additionalDetails = await Profile.findByIdAndUpdate(
 			{_id : profile.additionalDetails._id},
@@ -40,11 +40,9 @@ exports.updateProfile = async (req, res) => {
 			{new: true}
 		);
 
-		const updatedUserDetails = await User.find(
+		const updatedUserDetails = await User.findOne(
 			{_id : id}
-		).populate("additionalDetails");
-
-		
+		).populate("additionalDetails").lean();
 
 		return res.json({
 			success: true,
