@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const Section = require("../models/Section")
-const SubSection = require("../models/SubSection")
+const SubSection = require("../models/Subsection")
 const CourseProgress = require("../models/CourseProgress")
 const Course = require("../models/Course")
 
@@ -21,6 +21,8 @@ exports.updateCourseProgress = async (req, res) => {
       userId: userId,
     })
 
+    console.log("courseProgress->", courseProgress);
+
     if (!courseProgress) {
       // If course progress doesn't exist, create a new one
       return res.status(404).json({
@@ -40,7 +42,7 @@ exports.updateCourseProgress = async (req, res) => {
     // Save the updated course progress
     await courseProgress.save()
 
-    return res.status(200).json({ message: "Course progress updated" })
+    return res.status(200).json({ courseProgress, message: "Course progress updated" })
   } catch (error) {
     console.error(error)
     return res.status(500).json({ error: "Internal server error" })

@@ -7,6 +7,7 @@ const { default: mongoose } = require("mongoose");
 const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail");
 
 const crypto = require("crypto");
+const CourseProgress = require("../models/CourseProgress");
 
 // PAYMENT INITIATE == capture the payment and initiate the Razorpay order
 exports.capturePayment = async (req, res) =>{
@@ -227,12 +228,20 @@ const enrollStudent = async(courses, userId, res) =>{
                 )
             }
 
+            const courseProgress = await CourseProgress.create({
+                courseID: courseId,
+                userId : userId,
+                completedVideos : [],
+            })
+
+            console.log("courseProgress=>", courseProgress);
             // find the course and add the course to their list of enrolledCourses
             const enrolledStudent = await User.findByIdAndUpdate(
                 userId ,
                 {
                     $push : {
                         courses : courseId ,
+                        courseProgress : courseProgress._id ,
                     }
                 },
                 {

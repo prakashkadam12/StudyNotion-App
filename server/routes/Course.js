@@ -46,6 +46,7 @@ const {
 
 // Importing Middlewares
 const { auth, isInstructor, isStudent, isAdmin } = require("../middlewares/auth")
+const { updateCourseProgress } = require("../controllers/courseProgress")
 
 // ********************************************************************************************************
 //                                      Course routes
@@ -81,7 +82,7 @@ router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses)
 router.delete("/deleteCourse", deleteCourse)
 
 // update course progress
-
+router.post("/updateCourseProgress", auth, isStudent, updateCourseProgress);
 
 
 // ********************************************************************************************************
