@@ -37,7 +37,7 @@ export function updateDisplayPicture(token, formData) {
         throw new Error(response?.data.message)
       }
 
-      console.log("user data ==> ", response?.data?.data );
+      console.log("user data ==> ", response?.data?.data.image );
 
       // if(response?.data.success == "false"){
       //   toast.error(response?.data.message);
@@ -45,8 +45,14 @@ export function updateDisplayPicture(token, formData) {
 
       toast.success("Display Picture Updated Successfully")
 
-      dispatch(setUser(response?.data?.data));
-      //localStorage.setItem("user", JSON.stringify(response?.data?.user));
+      dispatch(setUser((prev)=> ({...prev, image : response?.data?.data.image})));
+      localStorage.setItem("user", JSON.stringify({
+        ...JSON.parse(localStorage.getItem("user")), // Spread the previous user object from localStorage
+        image: response?.data?.data.image // Update the image property with the new value
+      }));
+      toast.dismiss(toastId);
+
+      return(response?.data?.data?.image);
 
     } catch (error) {
       console.log("UPDATE_DISPLAY_PICTURE_API API ERROR............==>", error)
@@ -98,24 +104,27 @@ export function updateProfile(token, formData) {
       const response = await apiConnector("PUT", UPDATE_PROFILE_API, formData, {
         Authorization: `Bearer ${token}`,
       })
-      console.log("💚 UPDATE_PROFILE_API API RESPONSE ==>", response)
+      console.log("💚 UPDATE_PROFILE_API API RESPONSE ==>", response.data.profile)
 
       if (!response?.data.success) {
         throw new Error(response.data.message)
       }
-      const userImage = response.data?.updatedUserDetails?.image
-        ? response?.data?.updatedUserDetails?.image
-        : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.updatedUserDetails.firstName} ${response.data.updatedUserDetails.lastName}`
+      // const userImage = response.data?.updatedUserDetails?.image
+      //   ? response?.data?.updatedUserDetails?.image
+      //   : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.updatedUserDetails.firstName} ${response.data.updatedUserDetails.lastName}`
       
-      console.log("userImage==>", userImage);
-        dispatch(
-        setUser({ ...response.data.updatedUserDetails, image: userImage  })
-      )
+      // console.log("userImage==>", userImage);
+      //   dispatch(
+      //   setUser({ ...response.data.updatedUserDetails, image: userImage  })
+      // )
+
+
       
       toast.success("Profile Updated Successfully");
 
-      console.log("response.data.updatedUserDetails[0]", response.data.updatedUserDetails[0]);
-      localStorage.setItem("user", JSON.stringify(response.data.updatedUserDetails[0]));
+      // localstorage update
+      localStorage.setItem("user", JSON.stringify(response.data.profile));
+      dispatch(setUser(response.data.profile));
       
     } catch (error) {
       console.log("UPDATE_PROFILE_API API ERROR............", error)

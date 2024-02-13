@@ -15,7 +15,7 @@ export function getUserDetails(token, navigate) {
       const response = await apiConnector("GET", GET_USER_DETAILS_API, null, {
         Authorization: `Bearer ${token}`,
       })
-      console.log("GET_USER_DETAILS API RESPONSE............", response)
+      console.log("### GET_USER_DETAILS API RESPONSE............", response.data.data)
 
       if (!response.data.success) {
         throw new Error(response.data.message)
@@ -23,7 +23,14 @@ export function getUserDetails(token, navigate) {
       const userImage = response.data.data.image
         ? response.data.data.image
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.data.firstName} ${response.data.data.lastName}`
-      dispatch(setUser({ ...response.data.data, image: userImage }))
+      
+        // TODO: here updation live in local storage and state / slice
+
+      //dispatch(setUser(response.data.data));
+      //localStorage.setItem("user", JSON.stringify(response.data.data));
+
+        //dispatch(setUser({ ...response.data.data, image: userImage }))
+
     } catch (error) {
       dispatch(logout(navigate))
       console.log("GET_USER_DETAILS API ERROR............", error)

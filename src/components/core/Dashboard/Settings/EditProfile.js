@@ -38,13 +38,13 @@ export default function EditProfile() {
 
       
 
-      const response = dispatch(getUserDetails(token,navigate))
-      console.log("response->", response);
+      //const response = dispatch(getUserDetails(token,navigate))
+      //console.log("💚 response->", response);
 
       //localStorage.setItem("token", JSON.stringify(response.data.token))
-      console.log("response.data.updatedUserDetails[0]", response.data.updatedUserDetails[0]);
-      localStorage.setItem("user", JSON.stringify(response.data.updatedUserDetails[0]));
-      dispatch(setUser(localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : ""))
+      //console.log("response.data.updatedUserDetails[0]", response.data.updatedUserDetails[0]);
+      //localStorage.setItem("user", JSON.stringify(response.data.updatedUserDetails[0]));
+      //dispatch(setUser(localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : ""))
       
       //console.log("user==>", user);
 

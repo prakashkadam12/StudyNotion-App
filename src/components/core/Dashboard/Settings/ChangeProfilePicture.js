@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { updateDisplayPicture } from "../../../../services/operations/SettingsAPI"
 import IconBtn from "../../../common/IconBtn"
+import { setUser } from "../../../../slices/profileSlice"
 
 export default function ChangeProfilePicture() {
   const { token } = useSelector((state) => state.auth)
@@ -52,6 +53,14 @@ export default function ChangeProfilePicture() {
       await dispatch(updateDisplayPicture(token, formData)).then(() => {
         setLoading(false)
       })
+      //setLoading(false)
+
+      //console.log("updatedImage==>", updatedImg );
+      // dispatch(setUser((prev)=>({
+      //   ...prev,
+      //   image : "text"
+      // })))
+
       
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
