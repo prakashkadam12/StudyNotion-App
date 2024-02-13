@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom"
 
 import { updateProfile } from "../../../../services/operations/SettingsAPI"
 import IconBtn from "../../../common/IconBtn"
+import { useEffect } from "react"
+import { getUserDetails } from "../../../../services/operations/profileAPI"
+import { setUser } from "../../../../slices/profileSlice"
 
 const genders = ["Male", "Female", "Non-Binary", "Prefer not to say", "Other"]
 
@@ -13,16 +16,38 @@ export default function EditProfile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  useEffect(()=>{
+
+    dispatch(setUser(localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : ""));
+
+  }, [])
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm()
+  } = useForm();
+
+  
 
   const submitProfileForm = async (data) => {
-    // console.log("Form Data - ", data)
+    console.log("===========================sssssssssssssssssssssss");
+    console.log("Form Data ==> ", data)
     try {
       dispatch(updateProfile(token, data))
+
+      
+
+      const response = dispatch(getUserDetails(token,navigate))
+      console.log("response->", response);
+
+      //localStorage.setItem("token", JSON.stringify(response.data.token))
+      console.log("response.data.updatedUserDetails[0]", response.data.updatedUserDetails[0]);
+      localStorage.setItem("user", JSON.stringify(response.data.updatedUserDetails[0]));
+      dispatch(setUser(localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : ""))
+      
+      //console.log("user==>", user);
+
     } catch (error) {
       console.log("ERROR MESSAGE ==> ", error.message)
     }
