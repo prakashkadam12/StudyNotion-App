@@ -5,7 +5,8 @@ const CourseProgress = require("../models/CourseProgress")
 const Course = require("../models/Course")
 
 exports.updateCourseProgress = async (req, res) => {
-  const { courseId, subsectionId } = req.body
+  const { courseId, subsectionId } = req.body ;
+  
   const userId = req.user.id
 
   try {
@@ -28,6 +29,8 @@ exports.updateCourseProgress = async (req, res) => {
       return res.status(404).json({
         success: false,
         message: "Course progress Does Not Exist",
+        courseId,
+        userId ,
       })
     } else {
       // If course progress exists, check if the subsection is already completed

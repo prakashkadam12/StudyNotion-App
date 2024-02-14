@@ -234,7 +234,7 @@ const enrollStudent = async(courses, userId, res) =>{
                 completedVideos : [],
             })
 
-            console.log("courseProgress=>", courseProgress);
+            console.log("💥💥💥💥💥💥💥courseProgress=>", courseProgress, "and", courseProgress._id);
             // find the course and add the course to their list of enrolledCourses
             const enrolledStudent = await User.findByIdAndUpdate(
                 userId ,
@@ -249,7 +249,7 @@ const enrollStudent = async(courses, userId, res) =>{
                 }
             )
 
-            console.log("💫⭐️🌟✨⚡️☄️💥🔥💫⭐️🌟✨⚡️☄️💥🔥💫⭐️🌟✨⚡️☄️💥🔥enrolledStudent=>", enrolledStudent);
+            //console.log("💫⭐️🌟✨⚡️☄️💥🔥💫⭐️🌟✨⚡️☄️💥🔥💫⭐️🌟✨⚡️☄️💥🔥enrolledStudent=>", enrolledStudent);
 
             // email send to user if user successfully enrolled
             const emailResponse = await mailSender(
@@ -260,6 +260,7 @@ const enrollStudent = async(courses, userId, res) =>{
             if(emailResponse){
                 console.log("email sent successfully", emailResponse.response);
             }
+
         }
         catch(error){
             console.log("error=>", error);
