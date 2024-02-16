@@ -67,13 +67,13 @@ const VideoDetailsSidebar = ({setReviewModal, reviewModal}) => {
     
     
     return(
-        <div className={`absolute z-[2000] md:relative ${clicked ? "left-[-218px]" : "left-0"}`}>
+        <div className={`absolute  z-[2000] md:relative ${clicked ? "left-[-320px]" : "left-0"}`}>
 
-            <div  className={`flex  ${clicked ? "left-[-300px]" : "left-0"} absolute md:relative text-white h-[calc(100vh-3.5rem)] w-[320px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800`}>
+            <div  className={`flex absolute md:relative text-white h-[calc(100vh-3.5rem)] w-[320px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800`}>
                 
                 <p 
                 onClick={() => setClicked(prev => !prev)}
-                className="absolute  text-[25px] visible md:hidden top-2 right-[-20px] z-[2000] text-yellow-100" >{!clicked ? <div className="animation animate-pulse duration-100"><FaArrowAltCircleRight /></div> : <IoMdCloseCircle /> }</p>
+                className="absolute  text-[25px] visible md:hidden top-2 right-[-20px] z-[2000] text-yellow-100" >{clicked ? <div className="animation animate-pulse duration-100"><FaArrowAltCircleRight /></div> : <IoMdCloseCircle /> }</p>
 
                 {/* for btns and heading */}
                 <div className="mx-5 flex flex-col items-start justify-between gap-2 gap-y-4 border-b border-richblack-600 py-5 text-lg font-bold text-richblack-25">
@@ -92,7 +92,7 @@ const VideoDetailsSidebar = ({setReviewModal, reviewModal}) => {
                     </div>
 
                     {/* for heading and title */}
-                    <div className="flex flex-col">
+                    <div className="flex text-[13px] md:text-sm flex-col">
                         <p>{courseEntireData?.courseName}</p>
                         <p className="text-sm font-semibold text-richblack-500">{completedLectures?.length} / {totalNoOfLectures} </p>
                     </div>
@@ -147,6 +147,8 @@ const VideoDetailsSidebar = ({setReviewModal, reviewModal}) => {
                                                     `/view-course/${courseEntireData?._id}/section/${course?._id}/sub-section/${topic?._id}`
                                                     )
                                                     setVideoBarActive(topic._id)
+                                                    console.log("subsection clicked setted");
+                                                    setClicked((prev)=> !prev)
                                                 }}
                                                 >
                                                 <input
