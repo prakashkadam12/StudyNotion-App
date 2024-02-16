@@ -85,11 +85,7 @@ const Catalog = () =>{
                         Most Popular
                     </p>
 
-                    <p
-                    className={`px-4 py-2 ${ active === 2 ? "border-b border-b-yellow-25 text-yellow-25": "text-richblack-50"} cursor-pointer`}
-                    onClick={() => setActive(2)}>
-                        New
-                    </p>
+                    
 
                     
                     

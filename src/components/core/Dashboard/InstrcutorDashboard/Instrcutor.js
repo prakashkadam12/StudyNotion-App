@@ -48,7 +48,7 @@ export const Instrcutor = () => {
   {loading ? (
     <div className="spinner"></div>
   ) : (
-    <div className="my-4 flex h-[450px] space-x-4">
+    <div className="my-4 flex lg:flex-row flex-col gap-3 gap-y-5 h-full lg:h-full space-x-4">
       {/* Render chart / graph */}
       {totalAmount > 0 || totalStudents > 0 ? (
         <InstructorChart courses={instructorData} />

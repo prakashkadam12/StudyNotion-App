@@ -10,11 +10,18 @@ import ConfiramtionModal from "../../common/ConfirmationModa";
 import IconBtn from "../../common/IconBtn";
 import CTAButton from "../../../components/core/HomePage/Button";
 
+import { FaArrowAltCircleRight } from "react-icons/fa";
+import { IoMdCloseCircle } from "react-icons/io";
+
+
+
 
 const Sidebar = () => {
 
     const {user, loading, profileLoading} = useSelector((state)=> state.profile) ;
     const {loading: authLoading} = useSelector((state)=> state.auth) ;
+
+    const [clicked, setClicked] = useState(false);
 
     const dispatch = useDispatch();
     const naviagte = useNavigate ();
@@ -30,11 +37,22 @@ const Sidebar = () => {
     }
 
     console.log("LINKS==>",LINKS);
+    console.log("clicked==>", clicked);
 
     return(
         <>
             
-            <div className="flex min-w-[222px] flex-col border-r-[1px]  border-richblack-700 h-[calc(100vh - 3.5rem)] bg-richblue-800 py-10" >
+            <div className={`flex transition-all ease-out duration-200 min-w-[222px] flex-col border-r-[1px]  border-richblack-700  h-[100%] bg-richblue-800 py-10
+            absolute z-[5000] ${clicked?  "left-0" : "left-[-222px]" }
+            md:relative md:left-0 
+             `} >
+
+                
+                <p 
+                onClick={() => setClicked(prev => !prev)}
+                className="absolute  text-[25px] visible md:hidden top-2 right-[-20px] z-[1000] text-yellow-100" >{!clicked ? <div className="animation animate-pulse duration-100"><FaArrowAltCircleRight /></div> : <IoMdCloseCircle /> }</p>
+                
+
 
                 <div className="flex flex-col">
                     {
@@ -48,7 +66,11 @@ const Sidebar = () => {
                             }
                             console.log("link=", link);
                             return(
-                                <SidebarLinks key={link?.id} iconName={link?.icon} link={link} />
+                                
+
+                                    <SidebarLinks setClicked={setClicked} key={link?.id} iconName={link?.icon} link={link} />
+                                
+                                
                             )
                         })
                     }

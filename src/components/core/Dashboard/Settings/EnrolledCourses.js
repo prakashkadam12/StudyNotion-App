@@ -39,9 +39,9 @@ export default function EnrolledCourses() {
         <div className="my-8 text-richblack-5">
 
           {/* title bar */}
-          <div className="flex rounded-t-lg bg-richblack-500 ">
+          <div className="flex justify-between w-full rounded-t-lg bg-richblack-500 ">
             <p className="w-[45%] px-5 py-3">Course Name</p>
-            <p className="w-1/4 px-2 py-3">Duration</p>
+            <p className="hidden md:visible w-1/4 px-2 py-3">Duration</p>
             <p className="flex-1 px-2 py-3">Progress</p>
           </div>
 
@@ -66,19 +66,19 @@ export default function EnrolledCourses() {
                 <img
                   src={course.thumbnail}
                   alt="course_img"
-                  className="h-14 w-14 rounded-lg object-cover"
+                  className="h-14 w-[50%] md:w-14 rounded-lg object-cover"
                 />
                 <div className="flex max-w-xs flex-col gap-2">
-                  <p className="font-semibold">{course.courseName}</p>
-                  <p className="text-xs text-richblack-300">
+                  <p className="text-[13px] md:font-semibold">{course.courseName}</p>
+                  <p className="text-xs hidden md:visible text-richblack-300">
                     {course.courseDescription.length > 50
                       ? `${course.courseDescription.slice(0, 50)}...`
                       : course.courseDescription}
                   </p>
                 </div>
               </div>
-              <div className="w-1/4 px-2 py-3">{course?.totalDuration}</div>
-              <div className="flex w-1/5 flex-col gap-2 px-2 py-3">
+              <div className="hidden md:visible w-1/4 px-2 py-3">{course?.totalDuration}</div>
+              <div className="flex items-center justify-between w-[50%] md:w-1/5 flex-col gap-2 px-2 py-3">
                 <p>Progress: {course.progressPercentage || 0}%</p>
                 <ProgressBar
                   completed={course.progressPercentage || 0}

@@ -61,12 +61,12 @@ export const ReviewSlider = () => {
             disableOnInteraction: true,
           }}
           modules={[FreeMode, Pagination, Autoplay]}
-          className="w-full "
+          className="w-full"
         >
           {reviews.map((review, i) => {
             return (
-              <SwiperSlide key={i}>
-                <div className="flex w-full h-full rounded-md border-[1px] border-white items-center justify-center flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25">
+              <SwiperSlide className='!w-[200px]' key={i}>
+                <div className="flex  !md:w-full h-full rounded-md border-[1px] border-white items-center justify-center flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25">
                   <div className="flex items-center gap-4">
                     <img
                       src={

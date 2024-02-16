@@ -211,7 +211,7 @@ export default function EditProfile() {
             onClick={() => {
               navigate("/dashboard/my-profile")
             }}
-            className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
+            className="cursor-pointer   rounded-md bg-richblack-700 md:text-[13px] text-[10px]  py-2 px-1 md:py-2 md:px-5 font-semibold text-richblack-50"
           >
             Cancel
           </button>
