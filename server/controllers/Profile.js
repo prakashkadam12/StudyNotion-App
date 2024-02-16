@@ -1,4 +1,5 @@
 const Profile = require("../models/Profile");
+const Course = require("../models/Course");
 const User = require("../models/User");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 const { convertSecondsToDuration } = require("../utils/secToDuration");
@@ -222,20 +223,20 @@ exports.instructorDashboard = async (req, res) => {
 	  const courseDetails = await Course.find({ instructor: req.user.id })
   
 	  const courseData = courseDetails.map((course) => {
-		const totalStudentsEnrolled = course.studentsEnroled.length
+		const totalStudentsEnrolled = course.studentsEnrolled.length ;
 		const totalAmountGenerated = totalStudentsEnrolled * course.price
   
-		// Create a new object with the additional fields
+		
 		const courseDataWithStats = {
 		  _id: course._id,
 		  courseName: course.courseName,
 		  courseDescription: course.courseDescription,
-		  // Include other course properties as needed
+		  // adding others details 
 		  totalStudentsEnrolled,
 		  totalAmountGenerated,
 		}
   
-		return courseDataWithStats
+		return courseDataWithStats;
 	  })
   
 	  res.status(200).json({ courses: courseData })

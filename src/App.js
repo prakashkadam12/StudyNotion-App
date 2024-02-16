@@ -26,6 +26,7 @@ import Catalog from "./pages/Catalog";
 import CourseDetails from "./pages/CourseDetails";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails  from "./components/core/ViewCourse/VideoDetails";
+import { Instrcutor } from "./components/core/Dashboard/InstrcutorDashboard/Instrcutor";
 
 function App() {
 
@@ -67,11 +68,24 @@ function App() {
               )
             }
 
-            <Route path="/dashboard/add-course" element={<AddCourse />} />
+            {
+              user?.accountType == ACCOUNT_TYPE.INSTRUCTOR && (
+                <>
+                  <Route path="/dashboard/instructor" element={<Instrcutor />} />
+                  
+                  <Route path="/dashboard/add-course" element={<AddCourse />} />
 
-            <Route path="/dashboard/my-courses" element={<MyCourses/>} />
+                  <Route path="/dashboard/my-courses" element={<MyCourses/>} />
+
+                  <Route path="/dashboard/edit-course/:courseId" element={<EditCourse />} />
+
+                </>
+              )
+            }
+
+
+
             
-            <Route path="/dashboard/edit-course/:courseId" element={<EditCourse />} />
             
         </Route>
 
