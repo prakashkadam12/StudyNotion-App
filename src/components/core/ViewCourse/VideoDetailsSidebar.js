@@ -6,6 +6,10 @@ import { IoIosArrowBack } from "react-icons/io"
 import IconBtn from "../../common/IconBtn";
 import { BsChevronDown } from "react-icons/bs";
 
+import { FaArrowAltCircleRight } from "react-icons/fa";
+import { IoMdCloseCircle } from "react-icons/io";
+
+
 const VideoDetailsSidebar = ({setReviewModal, reviewModal}) => {
 
     const [activeStatus, setActiveStatus] = useState("");
@@ -14,6 +18,8 @@ const VideoDetailsSidebar = ({setReviewModal, reviewModal}) => {
     const location = useLocation() ;
     const { sectionId, subSectionId} = useParams() ;
     const {courseSectionData, courseEntireData, totalNoOfLectures, completedLectures} = useSelector((state)=> state.viewCourse);
+
+    const [clicked, setClicked] = useState(false);
 
 
     // invoked function expression (IIFE)
@@ -61,13 +67,13 @@ const VideoDetailsSidebar = ({setReviewModal, reviewModal}) => {
     
     
     return(
-        <>
+        <div className={`absolute z-[2000] md:relative ${clicked ? "left-[-218px]" : "left-0"}`}>
 
-            <div  className="flex text-white h-[calc(100vh-3.5rem)] w-[320px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800">
+            <div  className={`flex  ${clicked ? "left-[-300px]" : "left-0"} absolute md:relative text-white h-[calc(100vh-3.5rem)] w-[320px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800`}>
                 
                 <p 
                 onClick={() => setClicked(prev => !prev)}
-                className="absolute  text-[25px] visible md:hidden top-2 right-[-20px] z-[1000] text-yellow-100" >{!clicked ? <div className="animation animate-pulse duration-100"><FaArrowAltCircleRight /></div> : <IoMdCloseCircle /> }</p>
+                className="absolute  text-[25px] visible md:hidden top-2 right-[-20px] z-[2000] text-yellow-100" >{!clicked ? <div className="animation animate-pulse duration-100"><FaArrowAltCircleRight /></div> : <IoMdCloseCircle /> }</p>
 
                 {/* for btns and heading */}
                 <div className="mx-5 flex flex-col items-start justify-between gap-2 gap-y-4 border-b border-richblack-600 py-5 text-lg font-bold text-richblack-25">
@@ -164,7 +170,7 @@ const VideoDetailsSidebar = ({setReviewModal, reviewModal}) => {
 
             </div>
 
-        </>
+        </div>
     )
 }
 
