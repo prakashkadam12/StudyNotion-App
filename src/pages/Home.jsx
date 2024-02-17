@@ -17,7 +17,7 @@ const Home = () =>{
 
     return(
         <div>
-            homepage
+            
             {/* section 1 */}
             <div className="max-w-maxContent relative mx-auto flex flex-col w-11/12 item-center text-white justify-between ">
                 

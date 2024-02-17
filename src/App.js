@@ -27,6 +27,7 @@ import CourseDetails from "./pages/CourseDetails";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails  from "./components/core/ViewCourse/VideoDetails";
 import { Instrcutor } from "./components/core/Dashboard/InstrcutorDashboard/Instrcutor";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
