@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 exports.connect = () => {
-    //console.log("DBURL-",process.env.MONGODB_URL);
-    mongoose.connect(`'${process.env.MONGODB_URL}'`, {
+    //console.log("DBURL-",`'${process.env.MONGODB_URL}'`);
+    mongoose.connect("mongodb+srv://pptl8685:V5vPTV2CairDz6eX@cluster0.ehycfhl.mongodb.net/studynotionDB", {
         useNewUrlParser: true,
         useUnifiedTopology:true,
     })
