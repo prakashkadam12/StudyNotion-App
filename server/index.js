@@ -22,7 +22,7 @@ database.connect();
 app.use(express.json());
 app.use(cookieParser());
 app.use(
-	cors()
+	cors( )
 )
 
 app.use(
@@ -44,6 +44,7 @@ app.use("/api/v1/payment", paymentRoutes);
 //def route
 
 app.get("/", (req, res) => {
+	console.log("put first req");
 	res.send("Server running successfully 💚->> made by <a href='https://github.com/parthmern' target='_blank'>@parthmern</a> with 💚");
 	return res.json({
 		success:true,
