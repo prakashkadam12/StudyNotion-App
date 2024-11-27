@@ -11,7 +11,7 @@
     "concurrently": "^8.2.2",
     "copy-to-clipboard": "^3.3.3",
     "fs": "^0.0.1-security",
-    "mongodb": "^5.8.0",
+    "mongodb": "^5.9.2",
     "mongoose": "^7.8.3",
     "neo-async": "^2.6.2",
     "react": "^18.2.0",
