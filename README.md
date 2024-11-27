@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ❤️ Frontend
 ## 💚 how to run react and backend at the same time ?
 
@@ -114,3 +115,6 @@ app.post('/payment-success', (req, res) => {
 - swiper js ==> headache for me in import of swiper js components 
 
 - videoDetails with previous,next video is challaenging 
+=======
+# StudyNotion-App
+>>>>>>> 62a91ae75e89d2a23a0c65663615e4de94e2f665
